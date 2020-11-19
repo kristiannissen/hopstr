@@ -8,7 +8,11 @@ import (
 )
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-    index := Index{Title: "Index"}
+    assets := make(map[string]string)
+    assets["css"] = "index.css"
+    assets["js"] = "index.js"
+
+    index := Index{Title: "Index", Assets: assets}
 
     fmt.Fprint(w, "Hello "+ index.Title)
 }
