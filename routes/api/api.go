@@ -5,8 +5,8 @@ type Hop struct {
 }
 
 func LoadHops() (map, int) {
-  hops := make(map[string]Hop)
-  hops["citra"] = Hop{Name: "Citra"}
+  hops := make(map[string]string)
+  hops["citra"] = "Citra"
 
   return hops, 200
 }
