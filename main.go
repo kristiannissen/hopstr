@@ -4,8 +4,9 @@ import (
 	"log"
 	"net/http"
 	"os"
-    "fmt"
+  "fmt"
 	"thingy"
+  "routes"
 )
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
@@ -23,7 +24,7 @@ func main() {
 		log.Printf("Default port %s", port)
 	}
 
-  http.HandleFunc("/", indexHandler)
+  http.HandleFunc("/", routes.IndexHandler)
 
 	log.Printf("Listening on port %s", port)
 	if err := http.ListenAndServe(":"+port, nil); err != nil {

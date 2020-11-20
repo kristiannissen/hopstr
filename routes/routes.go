@@ -3,22 +3,17 @@ package routes
 import (
     "net/http"
     "fmt"
-    "web"
-    "api"
+    "routes/web"
 )
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-    assets := make(map[string]string)
-    assets["css"] = "index.css"
-    assets["js"] = "index.js"
+    assets := map[string]string{"css": "css.css", "js": "js.js"}
 
-    index := Index{Title: "Index", Assets: assets}
+    index := web.Index{Title: "Index", Assets: assets}
 
     fmt.Fprint(w, "Hello "+ index.Title)
-}
 
-func HopHandler(w http.ResponseWriter, r *http.Request) {
-    hop := Hop{Name: "Amarillo"}
-
-    fmt.Fprint(w, "Hello "+ hop.Name)
+    for k, v := range index.Assets {
+      fmt.Fprint(w, "Asset: "+ k +":"+ v)
+    }
 }
