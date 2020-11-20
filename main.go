@@ -25,6 +25,7 @@ func main() {
 	}
 
   http.HandleFunc("/", routes.IndexHandler)
+  http.HandleFunc("/hops/", routes.HopsHandler)
 
 	log.Printf("Listening on port %s", port)
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
