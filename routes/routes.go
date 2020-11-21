@@ -20,13 +20,10 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func HopsHandler(w http.ResponseWriter, r *http.Request) {
-  hops, status := api.LoadHops()
-
-  if status != 200 {
-    fmt.Fprint(w, "Error")
-  }
-
-  for k, v := range hops {
-    fmt.Fprint(w, "Hop "+ k)
-  }
+    hops, status := api.LoadHops()
+    if status == 1 {
+        fmt.Fprint(w, "Hello "+ hops["1"])
+    } else {
+        fmt.Fprint(w, "Hello "+ hops["2"])
+    }
 }

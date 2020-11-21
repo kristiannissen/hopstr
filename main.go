@@ -4,18 +4,8 @@ import (
 	"log"
 	"net/http"
 	"os"
-  "fmt"
-	"thingy"
-  "routes"
+	"routes"
 )
-
-func indexHandler(w http.ResponseWriter, r *http.Request) {
-  substitutes := []thingy.Thingy{
-    thingy.Thingy{Name: "hops"},
-  }
-  thingy := thingy.Thingy{Name: "Pussy", Substitutes: substitutes}
-  fmt.Fprintf(w, "Hello %s", thingy.Name)
-}
 
 func main() {
 	port := os.Getenv("PORT")
@@ -24,8 +14,8 @@ func main() {
 		log.Printf("Default port %s", port)
 	}
 
-  http.HandleFunc("/", routes.IndexHandler)
-  http.HandleFunc("/hops/", routes.HopsHandler)
+	http.HandleFunc("/", routes.IndexHandler)
+	http.HandleFunc("/api/hops/", routes.HopsHandler)
 
 	log.Printf("Listening on port %s", port)
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
