@@ -29,6 +29,6 @@ func HopsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func HopHandler(w http.ResponseWriter, r *http.Request) {
-    var path string = r.URL.Path
-    fmt.Fprint(w, path)
+	var path string = r.URL.Path
+	fmt.Fprint(w, path)
 }
