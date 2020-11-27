@@ -23,7 +23,6 @@ func Hello(x int) int {
 
 // Creates a new Router
 func NewRouter() *Router {
-	// FIXME: On new the Routes needs to be empty
 	return &Router{Routes: make(map[string]string)}
 }
 
