@@ -39,8 +39,6 @@ func rewrite(path string) string {
 	groups := reg.FindStringSubmatch(path)
 
 	if len(groups) > 0 {
-		// fmt.Println("rep is ", groups[0], path)
-		// TODO: Add the key to the params map
 		// Replace key with regexp string
 		path = str.ReplaceAll(path, groups[0], "([a-zA-Z0-9]+)")
 	}

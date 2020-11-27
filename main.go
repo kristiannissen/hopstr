@@ -1,11 +1,20 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
+  d "dispatch"
+  "fmt"
 )
+
+func HelloKitty(w http.ResponseWriter, r *http.Request) {
+  fmt.Println("Hello Kitty")
+}
+
+func HelloPussy(w http.ResponseWriter, r *http.Request) {
+  fmt.Println("Hello Pussy")
+}
 
 func main() {
 
@@ -18,7 +27,10 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		var path string = r.URL.Path
 
-		fmt.Fprint(w, "Done "+path)
+    disp := d.NewRoute()
+    disp.AddRoute("/kitty/{hello}/", HelloKitty)
+    disp.AddRoute("/pussy/", HelloPussy)
+    disp.Dispatch(path)
 	})
 
 	log.Printf("Listening on port %s", port)
