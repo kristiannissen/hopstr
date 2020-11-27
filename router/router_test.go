@@ -1,7 +1,15 @@
 package router
 
-import "testing"
+import (
+  "testing"
+  "fmt"
+  r "router"
+)
 
-func TestAddRoute(t *testing.T) {
-  t.Error("Fuck off");
+func TestHello(t *testing.T) {
+  x := r.Hello(2)
+  fmt.Print(x)
+  if x != 4 {
+    t.Error("Expected 2 * 2 to equal 4")
+  }
 }

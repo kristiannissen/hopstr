@@ -1,13 +1,15 @@
 package router
 
-import (
-	"fmt"
-	"net/http"
-)
-
-func AddRoute(path string, r string) {
+// Router
+type Router struct {
+  routes map[string]string
+}
+// Used only to test
+func Hello(x int) int {
+  return x * 2
 }
 
-func IndexHandler(w http.ResponseWriter, r *http.Request) {
-  fmt.Fprint(w, "Hello from Index")
+func (r *Router) AddRoute(path string, s string) *Router {
+  r.routes[path] = s
+  return r
 }
