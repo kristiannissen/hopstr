@@ -36,7 +36,8 @@ func TestAddRoute(t *testing.T) {
 func TestAddRouteRewrite(t *testing.T) {
 	route := r.NewRouter()
 	route.AddRoute("/hello/{pussy}/", "hello")
-	route.AddRoute("/hello/{kitty}/hello/", "hello")
 
-	t.Error("shit")
+	if route.Routes["\\/hello\\/([a-zA-Z0-9]+)\\/"] != "hello" {
+		t.Error("Route rewrite not working")
+	}
 }
