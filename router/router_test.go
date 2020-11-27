@@ -8,7 +8,7 @@ import (
 
 func TestHello(t *testing.T) {
   x := r.Hello(2)
-  fmt.Println("Hello Kitty")
+  fmt.Println("**")
 
   if x != 4 {
     t.Error("Expected 2 * 2 to equal 4")
@@ -36,7 +36,7 @@ func TestAddRoute(t *testing.T) {
 func TestAddRouteRewrite(t *testing.T) {
   route := r.NewRouter()
   route.AddRoute("/hello/{pussy}/", "hello")
-  route.AddRoute("/{kitty}/hello/{pussy}/", "hello")
+  route.AddRoute("/hello/{kitty}/hello/", "hello")
 
   t.Error("shit")
 }
