@@ -1,4 +1,0 @@
-/**
- *
- */
-console.dir("Hello Kitty");
