@@ -10,8 +10,8 @@ import (
 )
 
 type Param struct {
-    key string
-    value string
+	key   string
+	value string
 }
 
 var Params []Param
@@ -28,20 +28,29 @@ func NewRoute() *Route {
 
 func (route *Route) HandleFunc(
 	pattern string, f func(http.ResponseWriter, *http.Request)) {
-        route.routes[pattern] = f
+	route.routes[pattern] = f
 }
 
 func (route *Route) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	for p, h := range route.routes {
-        // Does p contain regexp
-        reg := regexp.MustCompile(`\{([a-z]+)\}`)
-	    groups := reg.FindStringSubmatch(p)
-        fmt.Println(groups)
-
-        if p == r.URL.Path {
-			h(w, r)
-			return
-		}
+    var path string = p
+		// Does p contain regexp
+		reg := regexp.MustCompile(`\{([a-z]+)\}`)
+		groups := reg.FindStringSubmatch(p)
+    // If groups has len > 0
+    if len(groups) > 0 {
+      // Rewrite p
+      path = str.ReplaceAll(path, groups[0], "([a-zA-Z0-9]+)")
+    }
+    // Escape / append ^ prepend $
+    path = "^"+ str.ReplaceAll(path, "/", "\\/") +"$"
+    fmt.Println(path)
+    // Match regular expression path with URL.Path
+    m, _ := regexp.MatchString(path, r.URL.Path)
+    if m == true {
+      h(w, r)
+      return
+    }
 	}
 	http.NotFound(w, r)
 }
@@ -52,7 +61,7 @@ func rewritePattern(path string) string {
 
 	if len(groups) > 0 {
 		path = str.ReplaceAll(path, groups[0], "([a-zA-Z0-9]+)")
-    }
+	}
 	path = str.ReplaceAll(path, "/", "\\/")
 	return path
 }
