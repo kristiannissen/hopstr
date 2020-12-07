@@ -9,13 +9,6 @@ import (
 	str "strings"
 )
 
-type Param struct {
-	key   string
-	value string
-}
-
-var Params []Param
-
 type Handle func(http.ResponseWriter, *http.Request)
 
 type Route struct {
@@ -33,24 +26,25 @@ func (route *Route) HandleFunc(
 
 func (route *Route) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	for p, h := range route.routes {
-    var path string = p
+		var path string = p
 		// Does p contain regexp
 		reg := regexp.MustCompile(`\{([a-z]+)\}`)
-		groups := reg.FindStringSubmatch(p)
-    // If groups has len > 0
-    if len(groups) > 0 {
-      // Rewrite p
-      path = str.ReplaceAll(path, groups[0], "([a-zA-Z0-9]+)")
-    }
-    // Escape / append ^ prepend $
-    path = "^"+ str.ReplaceAll(path, "/", "\\/") +"$"
-    fmt.Println(path)
-    // Match regular expression path with URL.Path
-    m, _ := regexp.MatchString(path, r.URL.Path)
-    if m == true {
-      h(w, r)
-      return
-    }
+		// Find groups matching
+		groups := reg.FindAllStringSubmatch(p, -1)
+		// If groups has len > 0
+		if len(groups) > 0 {
+			for _, v := range groups {
+				path = str.ReplaceAll(path, v[0], "([a-zA-Z0-9]+)")
+			}
+		}
+		// Escape / append ^ prepend $
+		path = "(?m)^" + str.ReplaceAll(path, "/", "\\/") + "$"
+		// Match regular expression path with URL.Path
+		m, _ := regexp.MatchString(path, r.URL.Path)
+		if m == true {
+			h(w, r)
+			return
+		}
 	}
 	http.NotFound(w, r)
 }
@@ -81,6 +75,7 @@ func main() {
 	route.HandleFunc("/", HelloKitty)
 	route.HandleFunc("/hello/", HelloKitty)
 	route.HandleFunc("/hello/{pussy}/", HelloKitty)
+	route.HandleFunc("/hello/{kitty}/eatmy/{pussy}/", HelloKitty)
 
 	log.Fatal(http.ListenAndServe(":"+port, route))
 }
