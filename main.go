@@ -72,19 +72,8 @@ func (route *Route) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func rewritePattern(path string) string {
-	reg := regexp.MustCompile(`\{(?P<key>[a-z]+)}`)
-	groups := reg.FindStringSubmatch(path)
-
-	if len(groups) > 0 {
-		path = str.ReplaceAll(path, groups[0], "([a-zA-Z0-9]+)")
-	}
-	path = str.ReplaceAll(path, "/", "\\/")
-	return path
-}
-
 func HelloKitty(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello Kitty path %s method %s", r.URL.Path, r.Method)
+	fmt.Fprintf(w, "Hello Kitty path %s method %s", r.URL.Path, r.Method, GetParam("kitty"))
 }
 
 func main() {
