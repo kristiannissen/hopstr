@@ -9,6 +9,13 @@ import (
 	str "strings"
 )
 
+type Param struct {
+    key string
+    value string
+}
+
+var Params []Param
+
 type Handle func(http.ResponseWriter, *http.Request)
 
 type Route struct {
@@ -21,15 +28,17 @@ func NewRoute() *Route {
 
 func (route *Route) HandleFunc(
 	pattern string, f func(http.ResponseWriter, *http.Request)) {
-	var regPath string = rewritePath(pattern)
-	route.routes[regPath] = f
+        route.routes[pattern] = f
 }
 
 func (route *Route) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	for p, h := range route.routes {
-		match, _ := regexp.MatchString(p, r.URL.Path)
+        // Does p contain regexp
+        reg := regexp.MustCompile(`\{([a-z]+)\}`)
+	    groups := reg.FindStringSubmatch(p)
+        fmt.Println(groups)
 
-		if match == true {
+        if p == r.URL.Path {
 			h(w, r)
 			return
 		}
@@ -37,13 +46,13 @@ func (route *Route) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func rewritePath(path string) string {
+func rewritePattern(path string) string {
 	reg := regexp.MustCompile(`\{(?P<key>[a-z]+)}`)
 	groups := reg.FindStringSubmatch(path)
 
 	if len(groups) > 0 {
 		path = str.ReplaceAll(path, groups[0], "([a-zA-Z0-9]+)")
-	}
+    }
 	path = str.ReplaceAll(path, "/", "\\/")
 	return path
 }
