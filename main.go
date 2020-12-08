@@ -9,16 +9,6 @@ import (
 	str "strings"
 )
 
-var params map[string]string = make(map[string]string)
-
-func paramKeys(m map[string]string) []string {
-	keys := make([]string, 0)
-	for k := range m {
-		keys = append(keys, k)
-	}
-	return keys
-}
-
 type Handle func(http.ResponseWriter, *http.Request)
 
 type Route struct {
@@ -45,21 +35,19 @@ func (route *Route) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		if len(groups) > 0 {
 			for _, v := range groups {
 				path = str.ReplaceAll(path, v[0], "([a-zA-Z0-9]+)")
-				params[v[1]] = ""
 			}
 		}
 		// Escape / append ^ prepend $
 		path = "(?m)^" + str.ReplaceAll(path, "/", "\\/") + "$"
 		// Compile full regexp
 		var re = regexp.MustCompile(path)
-		// Get the params keys for looping
-		keys := paramKeys(params)
 		// Find all submatches
 		for _, m := range re.FindAllStringSubmatch(r.URL.Path, -1) {
 			// Skip the first match
+			fmt.Println(m)
 			for i, p := range m[1:] {
 				// Insert value by key
-				params[keys[i]] = p
+				fmt.Println(p, i)
 			}
 		}
 		// Match regular expression path with URL.Path
@@ -73,7 +61,7 @@ func (route *Route) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func HelloKitty(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello Kitty path %s method %s", r.URL.Path, r.Method, GetParam("kitty"))
+	fmt.Fprintf(w, "Hello Kitty path %s method %s", r.URL.Path, r.Method)
 }
 
 func main() {
