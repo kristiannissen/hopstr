@@ -9,6 +9,26 @@ import (
 	str "strings"
 )
 
+type Param struct {
+	Key string
+	Val string
+}
+
+var Params []Param = []Param{}
+
+func AddParam(key, val string) []Param {
+	return append(Params, Param{Key: key, Val: val})
+}
+
+func GetParam(key string) string {
+	for _, p := range Params {
+		if p.Key == key {
+			return p.Val
+		}
+	}
+	return ""
+}
+
 type Handle func(http.ResponseWriter, *http.Request)
 
 type Route struct {
@@ -25,35 +45,29 @@ func (route *Route) HandleFunc(
 }
 
 func (route *Route) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	for p, h := range route.routes {
-		var path string = p
+	// Iterate through routes
+	for pattern, handler := range route.routes {
 		// Does p contain regexp
-		reg := regexp.MustCompile(`\{([a-z]+)\}`)
+		reg := regexp.MustCompile(`\{([a-z0-9]+)\}`)
 		// Find groups matching
-		groups := reg.FindAllStringSubmatch(p, -1)
+		groups := reg.FindAllStringSubmatch(pattern, -1)
 		// If groups has len > 0
 		if len(groups) > 0 {
 			for _, v := range groups {
-				path = str.ReplaceAll(path, v[0], "([a-zA-Z0-9]+)")
+				pattern = str.ReplaceAll(pattern, v[0], "(?P<"+v[1]+">[a-zA-Z0-9]+)")
 			}
 		}
 		// Escape / append ^ prepend $
-		path = "(?m)^" + str.ReplaceAll(path, "/", "\\/") + "$"
-		// Compile full regexp
-		var re = regexp.MustCompile(path)
-		// Find all submatches
-		for _, m := range re.FindAllStringSubmatch(r.URL.Path, -1) {
-			// Skip the first match
-			fmt.Println(m)
-			for i, p := range m[1:] {
-				// Insert value by key
-				fmt.Println(p, i)
+		pattern = "(?m)^" + str.ReplaceAll(pattern, "/", "\\/") + "$"
+		reg = regexp.MustCompile(pattern)
+		match := reg.FindStringSubmatch(r.URL.Path)
+		if len(match) > 0 {
+			for i, name := range reg.SubexpNames() {
+				if i > 0 {
+					Params = AddParam(name, match[i])
+				}
 			}
-		}
-		// Match regular expression path with URL.Path
-		m, _ := regexp.MatchString(path, r.URL.Path)
-		if m == true {
-			h(w, r)
+			handler(w, r)
 			return
 		}
 	}
@@ -61,7 +75,12 @@ func (route *Route) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func HelloKitty(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello Kitty path %s method %s", r.URL.Path, r.Method)
+	fmt.Fprintf(w,
+		"Hello Kitty path %s method %s, param %s",
+		r.URL.Path,
+		r.Method,
+		GetParam("key1"),
+	)
 }
 
 func main() {
@@ -74,8 +93,8 @@ func main() {
 	route := NewRoute()
 	route.HandleFunc("/", HelloKitty)
 	route.HandleFunc("/hello/", HelloKitty)
-	route.HandleFunc("/hello/{pussy}/", HelloKitty)
-	route.HandleFunc("/hello/{kitty}/eatmy/{pussy}/", HelloKitty)
+	route.HandleFunc("/hello/{key0}/", HelloKitty)
+	route.HandleFunc("/hello/{key1}/eatmy/{key2}/", HelloKitty)
 
 	log.Fatal(http.ListenAndServe(":"+port, route))
 }
