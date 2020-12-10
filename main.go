@@ -75,8 +75,10 @@ func (route *Route) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func HelloKitty(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html")
+
 	fmt.Fprintf(w,
-		"Hello Kitty path %s method %s, param %s",
+		"Hello Kitty path %s method %s, param %s, render %s",
 		r.URL.Path,
 		r.Method,
 		GetParam("key1"),
