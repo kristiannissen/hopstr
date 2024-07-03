@@ -21,8 +21,9 @@ type Hoplist struct {
 // repository pattern but for simplicity it is kept in the same
 // package as the domain
 type HopRepository interface {
-	List()
-	Find(slug string)
+	// TODO: add support for pagination
+	List() (*Hoplist, error)
+	Find(slug string) (*Hop, error)
 }
 
 // specific implementation of the repository interface
@@ -30,6 +31,14 @@ type HopRepository interface {
 type MockHopRepository struct{}
 
 // implement the methods
-func (m *MockHopRepository) Find(slug string) {
+func (m *MockHopRepository) Find(slug string) (*Hop, error) {
+	var err error
 
+	return &Hop{Name: "Kitty"}, err
+}
+
+func (m *MockHopRepository) List() (*Hoplist, error) {
+	var err error
+
+	return &Hoplist{}, err
 }
