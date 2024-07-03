@@ -3,10 +3,10 @@ package domain
 import "testing"
 
 func TestFind(t *testing.T) {
-	hop := &MockHopRepository{}
+	repo := NewMockHopRepository()
 	want := "Columbia"
 
-	if got, err := hop.Find("columbia"); err != nil {
+	if got, err := repo.Find("columbia"); err != nil {
 		t.Fatal(err)
 	} else {
 		if got.Name != want {
@@ -16,7 +16,7 @@ func TestFind(t *testing.T) {
 }
 
 func TestList(t *testing.T) {
-	hoplist := &MockHopRepository{}
+	hoplist := NewMockHopRepository()
 	want := 0
 
 	if got, err := hoplist.List(); err != nil {
