@@ -2,7 +2,6 @@ package domain
 
 import (
 	"encoding/json"
-	"io"
 	"log"
 	"os"
 	"path/filepath"
@@ -38,25 +37,41 @@ type HopRepository interface {
 // for testing purposes we will start out with a mock
 type MockHopRepository struct{}
 
+// utility function to load json data
+func loaddata() *Hoplist {
+	hoplist := &Hoplist{}
+	abs, _ := filepath.Abs("./../../../hops.json")
+	if file, err := os.Open(abs); err != nil {
+		log.Fatal(err)
+	} else {
+		json.NewDecoder(file).Decode(&hoplist)
+	}
+
+	return hoplist
+}
+
 // implement the methods
 func (m *MockHopRepository) Find(slug string) (*Hop, error) {
 	var err error
+	hoplist := loaddata()
+	hop := &Hop{}
 
-	return &Hop{Name: "Kitty"}, err
+	for _, h := range hoplist.Hoplist {
+		if h.Slug == slug {
+			hop.Uuid = h.Uuid
+			hop.Name = h.Name
+			hop.Slug = h.Slug
+			hop.Characteristics = h.Characteristics
+			break
+		}
+	}
+
+	return hop, err
 }
 
 func (m *MockHopRepository) List() (*Hoplist, error) {
 	var err error
-	var file io.Reader
-	hoplist := &Hoplist{}
-
-	// Open file and decode
-	abs, _ := filepath.Abs("./../../../hops.json")
-	if file, err = os.Open(abs); err != nil {
-		log.Fatalf("List %s", err)
-	}
-
-	json.NewDecoder(file).Decode(&hoplist)
+	hoplist := loaddata()
 
 	return hoplist, err
 }

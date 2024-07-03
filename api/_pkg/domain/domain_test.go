@@ -4,7 +4,7 @@ import "testing"
 
 func TestFind(t *testing.T) {
 	hop := &MockHopRepository{}
-	want := "Hello"
+	want := "Columbia"
 
 	if got, err := hop.Find("columbia"); err != nil {
 		t.Fatal(err)
