@@ -1,14 +1,17 @@
 package api
 
 import (
+	"encoding/json"
 	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"hopstr/api/_pkg/domain"
 )
 
 func TestHop(t *testing.T) {
-	req := httptest.NewRequest(http.MethodGet, "/hop", nil)
+	req := httptest.NewRequest(http.MethodGet, "/hop?slug=columbia", nil)
 	w := httptest.NewRecorder()
 
 	Hop(w, req)
@@ -18,5 +21,10 @@ func TestHop(t *testing.T) {
 
 	resp, _ := io.ReadAll(res.Body)
 
-	t.Error(string(resp))
+	hop := &domain.Hop{}
+	json.Unmarshal(resp, &hop)
+
+	if hop.Name != "Columbia" {
+		t.Errorf("want Columbia got %s", hop.Name)
+	}
 }
