@@ -1,5 +1,13 @@
 package domain
 
+import (
+	"encoding/json"
+	"io"
+	"log"
+	"os"
+	"path/filepath"
+)
+
 type Characteristics struct {
 	Name        string `json:"name"`
 	Value       string `json:"value"`
@@ -15,7 +23,7 @@ type Hop struct {
 }
 
 type Hoplist struct {
-	Hoplist []Hoplist `json:"hoplist"`
+	Hoplist []Hop `json:"hoplist"`
 }
 
 // repository pattern but for simplicity it is kept in the same
@@ -39,6 +47,16 @@ func (m *MockHopRepository) Find(slug string) (*Hop, error) {
 
 func (m *MockHopRepository) List() (*Hoplist, error) {
 	var err error
+	var file io.Reader
+	hoplist := &Hoplist{}
 
-	return &Hoplist{}, err
+	// Open file and decode
+	abs, _ := filepath.Abs("./../../../hops.json")
+	if file, err = os.Open(abs); err != nil {
+		log.Fatalf("List %s", err)
+	}
+
+	json.NewDecoder(file).Decode(&hoplist)
+
+	return hoplist, err
 }
