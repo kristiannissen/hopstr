@@ -1,0 +1,22 @@
+---
+import Skeleton from '../../layouts/Skeleton.astro';
+
+export async function getStaticPaths() {
+	const hops = [
+		{slug: "columbia", name: "Columbia"},
+		{slug: "simcoe", name: "Simcoe"},
+	];
+
+	return hops.map(({slug, name}) => {
+		return {
+			params: {slug},
+			props: {name}
+		};
+	});
+}
+
+const {name} = Astro.props;
+---
+<Skeleton title={name}>
+	<div>You are reading about {name}</div>
+</Skeleton>

@@ -1,20 +1,6 @@
 ---
-import Navigation from "../components/Navigation.astro";
-import "../styles/global.css";
-
-const pageTitle = "Hello Kitty";
+import Skeleton from '../layouts/Skeleton.astro';
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-		<h1>My Astro Site</h1>
-<Navigation />
-	</body>
-</html>
+<Skeleton title="Hello Kitty">
+	I am a fucking page
+</Skeleton>
