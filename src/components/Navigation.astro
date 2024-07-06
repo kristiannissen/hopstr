@@ -15,15 +15,20 @@
     display: block;
   }
 </style>
-<nav class="w-screen relative h-8">
+<nav class="w-screen relative h-14 shadow-lg">
   <div class="container mx-auto">
-    <input type="checkbox" class="absolute z-1i opacity-0" />
-    <a href="#" class="z-0 font-semibold">&#8801;</a>
-    <div class="absolute top-8 left-0">
-      <ul class="space-x-8">
-        <li><a href="/">Hjem</a></li>
-        <li><a href="/bryg">Bryg</a></li>
-        <li><a href="/humle">Humle</a></li>
+    <input
+      type="checkbox"
+      class="absolute z-10 top-4 left-4 w-8 h-8 opacity-0 cursor-pointer"
+    />
+    <a href="#" class="z-0 font-semibold text-4xl top-2 left-4 absolute"
+      >&#8801;</a
+    >
+    <div class="absolute top-12 left-0 w-6/12 bg-white shadow-lg">
+      <ul class="">
+        <li class="px-4 py-4"><a href="/">Hjem</a></li>
+        <li class="px-4 py-4"><a href="/bryg">Bryg</a></li>
+        <li class="px-4 py-4"><a href="/humle">Humle</a></li>
       </ul>
     </div>
     <div class="flex items-center"></div>

@@ -14,13 +14,18 @@ const { title } = Astro.props;
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="static">
     <Navigation />
     <div
       class="container mx-auto mt-8 flex flex-col md:flex-row items-center justify-center"
     >
       <slot />
     </div>
-    <footer class="container">Footer</footer>
+    <footer class="w-screen absolute bottom-0 left-0 h-40 bg-lime-500">
+      <div class="mx-auto flex content-center">
+        <div class="flex-auto w-64">here</div>
+        <div class="flex-auto w-64">here</div>
+      </div>
+    </footer>
   </body>
 </html>
