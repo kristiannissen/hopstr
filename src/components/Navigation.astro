@@ -1,15 +1,31 @@
 ---
+
 ---
-<nav class="w-full px-8 py-4">
-  <div class="container mx-auto flex items-center justify-between">
-    <div class="flex items-center"></div>
-    <ul class="md:flex space-x-8 hidden">
-      <li><a href="#">Hjem</a></li>
-      <li><a href="/blog">Blog</a></li>
-      <li><a href="/humle">Humle</a></li>
-    </ul>
-    <div class="md:hidden">
-      <a class="text-4xl font-semibold" href="#">&#8801;</a>
+
+<style>
+  nav input ~ div {
+    display: none;
+  }
+  nav input::after {
+    content: "";
+  }
+  nav input {
+  }
+  nav input:checked ~ div {
+    display: block;
+  }
+</style>
+<nav class="w-screen relative h-8">
+  <div class="container mx-auto">
+    <input type="checkbox" class="absolute z-1i opacity-0" />
+    <a href="#" class="z-0 font-semibold">&#8801;</a>
+    <div class="absolute top-8 left-0">
+      <ul class="space-x-8">
+        <li><a href="/">Hjem</a></li>
+        <li><a href="/bryg">Bryg</a></li>
+        <li><a href="/humle">Humle</a></li>
+      </ul>
     </div>
+    <div class="flex items-center"></div>
   </div>
 </nav>
