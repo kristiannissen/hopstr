@@ -11,6 +11,8 @@ import (
 func Hops(w http.ResponseWriter, req *http.Request) {
 	//
 	w.Header().Set("Content-type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "GET")
 
 	repo := domain.NewVercelHopRepository()
 	hoplist := &domain.Hoplist{}

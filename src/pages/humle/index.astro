@@ -1,0 +1,13 @@
+---
+import Skeleton from "../../layouts/Skeleton.astro";
+
+const response = await fetch("/api/hops");
+const hops = await response.json();
+console.log("Hello", hops);
+const title = "Humle index";
+---
+<Skeleton title={title}>
+  <div>
+	  {title}
+  </div>
+</Skeleton>
