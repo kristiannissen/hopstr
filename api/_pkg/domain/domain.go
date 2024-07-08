@@ -10,14 +10,14 @@ import (
 
 type Characteristics struct {
 	Name        string `json:"name"`
-	Value       string `json:"value,omitempty"`
-	Description string `json:"description,omitempty"`
+	Value       string `json:"value"`
+	Description string `json:"description"`
 }
 
 type Hop struct {
 	Uuid            string            `json:"uuid"`
 	Name            string            `json:"name"`
-	Description     string            `json:"description,omitempty"`
+	Description     string            `json:"description"`
 	Slug            string            `json:"slug"`
 	Characteristics []Characteristics `json:"characteristics"`
 }
