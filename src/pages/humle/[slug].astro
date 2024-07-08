@@ -45,14 +45,15 @@ const { hop } = Astro.props;
             </thead>
             <tbody>
               {
-                hop.characteristics && hop.characteristics.map((c) => (
-                  <tr>
-                    <td>
-                      <b>{c.name}</b>
-                    </td>
-                    <td>{c.value ? c.value : ""}</td>
-                  </tr>
-                ))
+                hop.characteristics &&
+                  hop.characteristics.map((c) => (
+                    <tr>
+                      <td>
+                        <b>{c.name}</b>
+                      </td>
+                      <td>{c.value ? c.value : ""}</td>
+                    </tr>
+                  ))
               }
             </tbody>
           </table>
