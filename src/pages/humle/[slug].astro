@@ -47,8 +47,10 @@ const { hop } = Astro.props;
               {
                 hop.characteristics.map((c) => (
                   <tr>
-                    <td>{c.name}</td>
-                    <td>{c.value}</td>
+                    <td>
+                      <b>{c.name}</b>
+                    </td>
+                    <td>{c.value ? c.value : ""}</td>
                   </tr>
                 ))
               }
