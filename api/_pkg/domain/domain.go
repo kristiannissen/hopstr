@@ -19,7 +19,7 @@ type Hop struct {
 	Name            string            `json:"name"`
 	Description     string            `json:"description"`
 	Slug            string            `json:"slug"`
-	Characteristics []Characteristics `json:"characteristics"`
+	Characteristics []Characteristics `json:"characteristics,omitempty"`
 }
 
 type Hoplist struct {
