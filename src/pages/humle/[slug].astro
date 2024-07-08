@@ -31,7 +31,7 @@ const { hop } = Astro.props;
       />
       <article class="mb-8">
         <h2 class="text-3xl font-serif font-semibold my-4">Beskrivelse</h2>
-        <p>{hop.description}</p>
+        <p>{hop.description ? hop.description : ""}</p>
       </article>
       <article class="mb-8">
         <h2 class="text-3xl font-serif font-semibold my-4">Karakteristika</h2>
@@ -45,7 +45,7 @@ const { hop } = Astro.props;
             </thead>
             <tbody>
               {
-                hop.characteristics.map((c) => (
+                hop.characteristics && hop.characteristics.map((c) => (
                   <tr>
                     <td>
                       <b>{c.name}</b>
