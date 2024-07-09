@@ -4,6 +4,7 @@ import (
 	"encoding/csv"
 	"log"
 	"os"
+	"regexp"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
@@ -31,7 +32,16 @@ func HarvestBeerStyles() {
 
 		var content string
 		list.Each(func(_ int, s *goquery.Selection) {
-			content = content + strings.TrimSpace(s.Text()) + "\n"
+			// content = content + strings.TrimSpace(s.Text()) + "\n"
+			//
+			pairs := strings.Split(s.Text(), ":")
+
+			re := regexp.MustCompile(`^[[:space:]]|`)
+			if re.Match([]byte(pairs[1])) {
+				pairs[1] = string(re.ReplaceAll([]byte(pairs[1]), []byte("")))
+			}
+
+			content = content + strings.TrimSpace(pairs[0]) + ": " + strings.TrimSpace(pairs[1]) + "|"
 		})
 
 		var brew string
@@ -47,5 +57,5 @@ func HarvestBeerStyles() {
 		log.Println("Visiting", r.URL.String())
 	})
 
-	c.Visit("")
+	c.Visit("https://www.brewersassociation.org/edu/brewers-association-beer-style-guidelines/")
 }
