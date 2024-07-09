@@ -4,7 +4,6 @@ title: Special Bitter or Best Bitter
 ---
 # Special Bitter or Best Bitter
 
-
 ## Beskrivelse
 Farve: Dybt guld til dybt kobber
 

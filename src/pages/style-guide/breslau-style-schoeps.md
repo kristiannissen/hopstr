@@ -1,0 +1,37 @@
+---
+layout: ../../layouts/StyleGuide.astro
+title: Breslau-Style Schoeps
+---
+# Breslau-Style Schoeps
+
+## Beskrivelse
+Farve: Halm til sort
+
+Klarhed: Afkøling er acceptabelt ved lave temperaturer. Nuancen kan være for mørk til at opfatte klarhed i nogle versioner.
+
+Opfattet malt aroma og smag: Maltsødmen er medium til mellemhøj med en udtalt maltkarakter. En høj andel af bleg eller mørk hvedemalt (så meget som 80 procent) bruges til at brygge disse øl samt Pilsener og andre blege, ristede eller mørke specialmalte. Blegere versioner kan have brødagtige, aromatiske kiksmalt-egenskaber. Mørkere versioner kan udvise ristet maltbitterhed ved lave niveauer og ristede eller nøddeagtige maltegenskaber. Karamellignende maltegenskaber er ikke til stede.
+
+Oplevet humlearoma og smag: Meget lav
+
+Oplevet bitterhed: Middel-lav til medium
+
+Gæringskarakteristika: Frugtagtige estere kan være til stede, da disse øl er gæret med ale-gær i modsætning til hvedeølgær . Diacetyl og phenoliske aromaer og smagsstoffer bør ikke være til stede.
+
+Krop: Fuld
+
+Yderligere noter: Traditionel tysk hvedeølgær bruges ikke i denne ølstil.						Når disse retningslinjer bruges som grundlag for vurdering af bidrag til konkurrencer, kan konkurrencearrangører vælge at oprette underkategorier, der afspejler lyse og mørke versioner.
+
+
+
+
+## Bryggedetaljer
+Original Gravity (°Plato) 1.067-1.072 (16.5-17.5 °Plato)
+Apparent Extract/Final Gravity (°Plato) 1.016-1.024 (4.5-6.1 °Plato)
+Alcohol by Weight (Volume) 4.80%-5.60% (6.00%-7.00%)
+Bitterness (IBU) 20-30
+Color SRM (EBC) 2-40&#43;(4-80&#43; EBC)					
+
+
+
+**Kilde**
+[Brewers Association Beer Style Guidelines](https://www.brewersassociation.org/)

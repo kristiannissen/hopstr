@@ -4,7 +4,6 @@ title: Extra Special Bitter
 ---
 # Extra Special Bitter
 
-
 ## Beskrivelse
 Farve: Rav til dybt kobber
 

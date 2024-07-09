@@ -1,0 +1,37 @@
+---
+layout: ../../layouts/StyleGuide.astro
+title: Classic Irish-Style Dry Stout
+---
+# Classic Irish-Style Dry Stout
+
+## Beskrivelse
+Farve: Sort
+
+Klarhed: Uigennemsigtig
+
+Opfattet malt Aroma og smag: Fremtræden af ​​kaffelignende ristet byg og en moderat grad af brændt malt aroma og smag definerer meget af karakteren. De karakteristiske tørristede egenskaber, der er typiske for Dry Stout, skyldes brugen af ​​ristet byg. Indledende malt- og lette karamelsmag giver plads til en karakteristisk tørristet bitterhed i finishen.
+
+Oplevet humlearoma og smag: Europæisk humlekarakter kan variere fra ikke til stede til lav i aroma og smag
+
+Oplevet bitterhed: Medium til medium-høj
+
+ Gæringsegenskaber: Frugtagtige estere er lave i forhold til malt og ristet byg samt humlebitterhed. Diacetyl er normalt fraværende i disse øl, men kan være til stede i meget lave niveauer. Let surhed kan forekomme, men er ikke påkrævet.
+
+Krop: Medium-let til medium
+
+Yderligere bemærkninger: Hovedretention bør være vedvarende
+
+
+
+
+## Bryggedetaljer
+Original Gravity (°Plato) 1.038-1.048 (9.5-11.9 °Plato)
+Apparent Extract/Final Gravity (°Plato) 1.008-1.012 (2.1-3.1 °Plato)
+Alcohol by Weight (Volume) 3.20%-4.20% (4.10%-5.30%)
+Bitterness (IBU) 30-40
+Color SRM (EBC) 40&#43;(80&#43; EBC)					
+
+
+
+**Kilde**
+[Brewers Association Beer Style Guidelines](https://www.brewersassociation.org/)

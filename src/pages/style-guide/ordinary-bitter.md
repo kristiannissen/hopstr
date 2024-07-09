@@ -4,7 +4,6 @@ title: Ordinary Bitter
 ---
 # Ordinary Bitter
 
-
 ## Beskrivelse
 Farve: Guld til kobberfarvet
 

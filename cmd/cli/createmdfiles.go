@@ -47,7 +47,7 @@ func CreateMdFiles() {
 		log.Fatal(mderr)
 	}
 
-	for i, style := range styles {
+	for _, style := range styles {
 		tmpl, tmplerr := template.New("md").Parse(string(mdfile))
 		if tmplerr != nil {
 			log.Fatal(tmplerr)
@@ -66,8 +66,10 @@ func CreateMdFiles() {
 			log.Fatal(oserr)
 		}
 
-		if i == 2 {
-			break
-		}
+		/*
+			if i == 2 {
+				break
+			}
+		*/
 	}
 }
