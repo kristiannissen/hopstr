@@ -1,0 +1,30 @@
+---
+import Skeleton from "../../layouts/Skeleton.astro";
+
+export async function getStaticPaths() {
+  const styles = (await Astro.glob("../../content/style-guide/*.mdx")) || [];
+
+  return styles.map((style) => {
+    return {
+      params: { slug: style.frontmatter.slug },
+      props: { style },
+    };
+  });
+}
+
+const { style } = Astro.props;
+const { Content } = Astro.props.style;
+---
+
+<Skeleton title={style.frontmatter.title}>
+  <div>
+    <article class="prose">
+      <header>
+        <h1>{style.title}</h1>
+      </header>
+      <article>
+        <Content />
+      </article>
+    </article>
+  </div>
+</Skeleton>

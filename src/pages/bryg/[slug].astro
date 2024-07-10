@@ -1,0 +1,30 @@
+---
+import Skeleton from "../../layouts/Skeleton.astro";
+
+export async function getStaticPaths() {
+  const brews = (await Astro.glob("../../content/brews/*.mdx")) || [];
+
+  return brews.map((brew) => {
+    return {
+      params: { slug: brew.frontmatter.slug },
+      props: { brew },
+    };
+  });
+}
+
+const { brew } = Astro.props;
+const { Content } = Astro.props.brew;
+---
+
+<Skeleton title={brew.frontmatter.title}>
+  <div>
+    <article class="prose prose-slate">
+      <header>
+        <h1>{brew.title}</h1>
+      </header>
+      <article>
+        <Content />
+      </article>
+    </article>
+  </div>
+</Skeleton>

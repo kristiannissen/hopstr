@@ -1,0 +1,9 @@
+---
+const { text, words } = Astro.props || "";
+const intro = text.split(" ").slice(0, parseInt(words));
+---
+
+<style></style>
+<div>
+  {intro.join(" ")}...
+</div>

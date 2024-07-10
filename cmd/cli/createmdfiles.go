@@ -14,6 +14,7 @@ type Style struct {
 	Name    string
 	Desc    string
 	Details string
+	Slug    string
 }
 
 func CreateMdFiles() {
@@ -39,23 +40,24 @@ func CreateMdFiles() {
 			Name:    row[0],
 			Desc:    strings.ReplaceAll(row[3], "|", "\n\n"),
 			Details: strings.ReplaceAll(row[2], "|", "\n\n"),
+			Slug:    slug.Make(row[0]),
 		})
 	}
 
-	mdfile, mderr := os.ReadFile("./style.md")
+	mdfile, mderr := os.ReadFile("./style.mdx")
 	if mderr != nil {
 		log.Fatal(mderr)
 	}
 
-	for _, style := range styles {
-		tmpl, tmplerr := template.New("md").Parse(string(mdfile))
-		if tmplerr != nil {
-			log.Fatal(tmplerr)
-			break
-		}
+	tmpl, tmplerr := template.New("mdx").Parse(string(mdfile))
+	if tmplerr != nil {
+		log.Fatal(tmplerr)
+	}
 
-		stylefilename := slug.Make(style.Name) + ".md"
-		stylefile, styleerr := os.Create("./src/pages/style-guide/" + stylefilename)
+	for i, style := range styles {
+
+		stylefilename := style.Slug + ".mdx"
+		stylefile, styleerr := os.Create("./src/content/style-guide/" + stylefilename)
 		if styleerr != nil {
 			log.Fatal(styleerr)
 			break
@@ -66,10 +68,8 @@ func CreateMdFiles() {
 			log.Fatal(oserr)
 		}
 
-		/*
-			if i == 2 {
-				break
-			}
-		*/
+		if i == 10 {
+			break
+		}
 	}
 }

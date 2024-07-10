@@ -26,3 +26,4 @@ pnpm-debug.log*
 hops.json
 *.csv
 style.md
+style.mdx

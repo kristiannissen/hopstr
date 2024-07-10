@@ -1,8 +1,9 @@
 ---
 import Skeleton from "../../layouts/Skeleton.astro";
 
-const response = await fetch("https://hopstr.vercel.app/api/hops");
-const hops = await response.json();
+import RandomResponsiveImage from "../../components/RandomResponsiveImage.astro";
+
+const brews = (await Astro.glob("../../content/brews/*.mdx")) || [];
 
 const title = "Bryg arkiv";
 ---
@@ -10,20 +11,16 @@ const title = "Bryg arkiv";
 <Skeleton title={title}>
   <div class="md:max-w-3xl p-4 grid md:grid-cols-2 md:gap-2">
     {
-      hops.hoplist.map((hop) => (
+      brews.map((brew) => (
         <article class="min-h-fit min-w-fit mb-8">
-          <img
-            src="https://placehold.co/384"
-            srcset="https://placehold.co/384"
-            sizes=""
-            alt="humle"
-            class="rounded"
-          />
+          <RandomResponsiveImage />
           <header class="">
             <h1 class="font-serif text-5xl font-extrabold my-4">
-              <a href={`/bryg/${hop.slug}`}>{hop.name}</a>
+              <a href={`/bryg/${brew.frontmatter.slug}`}>
+                {brew.frontmatter.title}
+              </a>
             </h1>
-            <p class="font-sans">{hop.description}</p>
+            <p class="font-sans">{brew.frontmatter.summary}</p>
           </header>
         </article>
       ))
