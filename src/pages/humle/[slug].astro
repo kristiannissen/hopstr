@@ -35,11 +35,11 @@ const ch = hop.characteristics?.filter((c) => filtered.includes(c.name)) || [];
   <div class="max-w-prose">
     <article class="mx-2">
       <header>
-        <h1 class="font-serif text-5xl font-extrabold my-4">{hop.name}</h1>
+        <h1 class="font-sans text-4xl font-extrabold my-4">{hop.name}</h1>
       </header>
       <RandomResponsiveImage />
       <article class="mb-8">
-        <h2 class="text-3xl font-serif font-semibold my-4">Beskrivelse</h2>
+        <h2 class="text-2xl font-sans font-semibold my-4">Beskrivelse</h2>
         <p>{hop.description ? hop.description : ""}</p>
       </article>
       <article class="mb-8 grid grid-cols-2 gap-2">

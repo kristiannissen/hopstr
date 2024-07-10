@@ -1,0 +1,13 @@
+---
+const { date } = Astro.props || "";
+const pub = Date.parse(date);
+const pubStr = pub.toLocaleString('da-dk', {
+	weekday: 'short',
+	year: 'numeric',
+	month: 'short',
+	day: 'numeric',
+})
+---
+<span class="">
+	<time datetime={date}>{pubStr}</time>
+</span>

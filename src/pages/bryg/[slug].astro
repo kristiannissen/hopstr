@@ -1,6 +1,8 @@
 ---
 import Skeleton from "../../layouts/Skeleton.astro";
 
+import PubTime from "../../components/PubTime.astro";
+
 export async function getStaticPaths() {
   const brews = (await Astro.glob("../../content/brews/*.mdx")) || [];
 
