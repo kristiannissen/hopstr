@@ -7,5 +7,7 @@ func main() {
 	//
 	// HarvestBeerStyles()
 	//
-	CreateMdFiles()
+	// CreateMdFiles()
+	//
+	HarvestHops()
 }

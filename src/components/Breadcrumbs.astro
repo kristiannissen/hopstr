@@ -3,21 +3,12 @@
 ---
 
 <style></style>
-<div class="">
+<div class="my-4">
   <nav role="">
-    <ul class="list-none inline">
+    <ul class="list-none inline" id="breadcrumb">
       <li><a href="/">Hjem</a></li>
     </ul>
   </nav>
 </div>
 <script>
-  var p = document.location.pathname.substring(
-    1,
-    document.location.pathname.length,
-  );
-  var n = document.querySelector("[role] ul");
-  p.split("/").map((k) => {
-    var e = document.createElement("li");
-    n.append(e);
-  });
 </script>
