@@ -1,12 +1,18 @@
 package main
 
+/*
+TODO: Remove \n, Split substitute correct, split %
+*/
 import (
+	"encoding/json"
 	"log"
+	"os"
 	"strings"
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/gocolly/colly"
+	"github.com/google/uuid"
 )
 
 type DataSet struct {
@@ -24,6 +30,7 @@ type Hop struct {
 	Data         []DataSet
 	BrewData     []BrewData
 	Substitution []Hop
+	Uuid         string
 }
 
 var Hops []Hop
@@ -54,7 +61,7 @@ func HarvestHops() {
 		// Only if brewvalues is present
 		if len(e.DOM.Find(".brewvalues").Nodes) > 0 {
 			// New hop
-			hop := Hop{}
+			hop := Hop{Uuid: uuid.New().String()}
 			// First element is header
 			hop.Name = e.DOM.Find(".entry-title").First().Text()
 
@@ -63,8 +70,8 @@ func HarvestHops() {
 				f := s.Find("th").Text()
 				l := s.Find("td").Text()
 				hop.Data = append(hop.Data, DataSet{
-					Name:  f,
-					Value: l,
+					Name:  strings.TrimSpace(f),
+					Value: strings.TrimSpace(l),
 				})
 			})
 			// Entries
@@ -88,7 +95,7 @@ func HarvestHops() {
 					})
 				}
 				hop.Data = append(hop.Data, DataSet{
-					Name:  h,
+					Name:  strings.TrimSpace(h),
 					Value: p,
 				})
 			})
@@ -112,5 +119,16 @@ func HarvestHops() {
 
 	c.Wait()
 
-	log.Println(Hops)
+	// Write to file
+	b, _ := json.Marshal(Hops)
+
+	f, err := os.Create("./hops.json")
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+
+	if _, wr := f.Write(b); wr != nil {
+		panic(wr)
+	}
 }
