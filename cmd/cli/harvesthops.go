@@ -1,7 +1,7 @@
 package main
 
 /*
-TODO: Remove \n, Split substitute correct, split %
+TODO: split %
 */
 import (
 	"encoding/json"
@@ -52,7 +52,6 @@ func HarvestHops() {
 		l := e.Attr("href")
 
 		if strings.Contains(l, "/hop/") {
-			// log.Println(l)
 			c.Visit(e.Request.AbsoluteURL(l))
 		}
 	})
@@ -84,9 +83,9 @@ func HarvestHops() {
 					s.NextAllFiltered("p").Each(func(_ int, t *goquery.Selection) {
 						p = p + t.Text() + " "
 					})
-					s.NextAllFiltered("ul").Each(func(_ int, t *goquery.Selection) {
+					s.NextAllFiltered("ul").Find("li").Each(func(_ int, l *goquery.Selection) {
 						hop.Substitution = append(hop.Substitution, Hop{
-							Name: t.Text(),
+							Name: strings.TrimSpace(l.Text()),
 						})
 					})
 				} else {
@@ -96,7 +95,7 @@ func HarvestHops() {
 				}
 				hop.Data = append(hop.Data, DataSet{
 					Name:  strings.TrimSpace(h),
-					Value: p,
+					Value: strings.TrimSpace(p),
 				})
 			})
 			// Brew values
@@ -120,7 +119,7 @@ func HarvestHops() {
 	c.Wait()
 
 	// Write to file
-	b, _ := json.Marshal(Hops)
+	b, _ := json.MarshalIndent(Hops, "", "\t")
 
 	f, err := os.Create("./hops.json")
 	if err != nil {
