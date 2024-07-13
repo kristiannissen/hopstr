@@ -16,21 +16,21 @@ import (
 )
 
 type DataSet struct {
-	Name  string
-	Value string
+	Name  string `json:"name"`
+	Value string `json:"value"`
 }
 
 type BrewData struct {
-	Name  string
-	Value string
+	Name  string `json:"name"`
+	Value string `json:"value"`
 }
 
 type Hop struct {
-	Name         string
-	Data         []DataSet
-	BrewData     []BrewData
-	Substitution []Hop
-	Uuid         string
+	Name         string     `json:"name"`
+	Data         []DataSet  `json:"data,omitempty"`
+	BrewData     []BrewData `json:"brewdata,omitempty"`
+	Substitution []Hop      `json:"substitutes,omitempty"`
+	Uuid         string     `json:"uuid"`
 }
 
 var Hops []Hop
