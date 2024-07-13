@@ -11,7 +11,7 @@ import (
 	"github.com/gocolly/colly"
 )
 
-func HarvestBeerStyles() {
+func BeerStyleHarvest() {
 	log.Println("Harvesting...")
 	//
 	f, err := os.Create("./styleguide.csv")

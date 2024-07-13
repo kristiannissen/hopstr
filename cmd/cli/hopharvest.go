@@ -35,7 +35,7 @@ type Hop struct {
 
 var Hops []Hop
 
-func HarvestHops() {
+func HopHarvest() {
 	log.Println("Harvesting hops...")
 
 	// Colly
@@ -68,6 +68,7 @@ func HarvestHops() {
 			e.DOM.Find(".wp-block-table tr").Each(func(_ int, s *goquery.Selection) {
 				f := s.Find("th").Text()
 				l := s.Find("td").Text()
+
 				hop.Data = append(hop.Data, DataSet{
 					Name:  strings.TrimSpace(f),
 					Value: strings.TrimSpace(l),
@@ -93,6 +94,7 @@ func HarvestHops() {
 						p = p + t.Text() + " "
 					})
 				}
+
 				hop.Data = append(hop.Data, DataSet{
 					Name:  strings.TrimSpace(h),
 					Value: strings.TrimSpace(p),

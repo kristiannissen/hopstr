@@ -7,10 +7,9 @@ import (
 func main() {
 	fmt.Println("Hello Kitty")
 	//
-	// HarvestBeerStyles()
+	// BeerStyleHarvest()
 	//
 	// CreateMdFiles()
 	//
-	HarvestHops()
-
+	HopHarvest()
 }
