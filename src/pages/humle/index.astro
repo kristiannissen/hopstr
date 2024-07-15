@@ -1,4 +1,6 @@
 ---
+/* pages/humle/index.astro */
+
 import Skeleton from "../../layouts/Skeleton.astro";
 
 import RandomResponsiveImage from "../../components/RandomResponsiveImage.astro";
@@ -20,8 +22,9 @@ const title = "Humle Arkiv";
             <h1 class="font-sans text-4xl font-extrabold my-4">
               <a href={`/humle/${hop.slug}`}>{hop.name}</a>
             </h1>
-	    <p class="font-sans">
-	    	<Intro text={hop.description} words="20" />
+            <p class="font-sans">
+              <Intro text={hop.description} words="20" />
+            </p>
           </header>
         </article>
       ))
