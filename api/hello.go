@@ -5,5 +5,13 @@ import "net/http"
 func Hello(w http.ResponseWriter, req *http.Request) {
 	w.WriteHeader(http.StatusOK)
 
-	w.Write([]byte("Hello Kitty"))
+	resp := make(chan []byte)
+
+	go func() {
+		resp <- []byte("Hello Pussy")
+	}()
+
+	response := <-resp
+
+	w.Write(response)
 }
