@@ -19,14 +19,10 @@ const { Content } = Astro.props.brew;
 ---
 
 <Skeleton title={brew.frontmatter.title}>
-  <div>
+  <div class="">
     <article class="prose prose-slate">
-      <header>
-        <h1>{brew.title}</h1>
-      </header>
-      <article>
-        <Content />
-      </article>
+      <PubTime date={brew.frontmatter.published} />
+      <Content />
     </article>
   </div>
 </Skeleton>

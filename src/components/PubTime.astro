@@ -1,14 +1,16 @@
 ---
-const { date } = Astro.props || "";
-const pub = Date.parse(date);
-const pubStr = pub.toLocaleString("da-dk", {
-  weekday: "short",
-  year: "numeric",
-  month: "short",
-  day: "numeric",
-});
+/* 2018-07-07 */
+
+const { date } = Astro.props || new Date().getTime();
+// Parse date
+const t = Date.parse(date);
+const d = new Date();
+// Set time
+d.setTime(t);
+// To locale date
+const l = d.toLocaleDateString("da-DK");
 ---
 
-<span class="">
-  <time datetime={date}>{pubStr}</time>
-</span>
+<div class="">
+  <span class="">Udgivet: <time datetime={l}>{l}</time></span>
+</div>

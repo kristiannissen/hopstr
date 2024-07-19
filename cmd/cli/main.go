@@ -11,5 +11,8 @@ func main() {
 	//
 	// CreateMdFiles()
 	//
-	HopHarvest()
+	// HopHarvest()
+	//
+	// ExportCSV()
+	ImportCSV()
 }
