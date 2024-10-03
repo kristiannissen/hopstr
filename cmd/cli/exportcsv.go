@@ -38,7 +38,7 @@ func ExportCSV() {
 			if strings.HasPrefix(data.Name, "Flavor") {
 				// Remove the unwanted part
 				indx := strings.LastIndex(data.Value, "These are the common")
-				writer.Write([]string{hop.Uuid, data.Value[0:indx]})
+				writer.Write([]string{hop.Uuid, hop.Name, data.Value[0:indx]})
 			}
 		}
 

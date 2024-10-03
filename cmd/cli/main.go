@@ -13,6 +13,6 @@ func main() {
 	//
 	// HopHarvest()
 	//
-	// ExportCSV()
-	ImportCSV()
+	ExportCSV()
+	// ImportCSV()
 }

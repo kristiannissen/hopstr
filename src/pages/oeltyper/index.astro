@@ -4,7 +4,7 @@ import Skeleton from "../../layouts/Skeleton.astro";
 import RandomResponsiveImage from "../../components/RandomResponsiveImage.astro";
 
 const styles = (await Astro.glob("../../content/style-guide/*.mdx")) || [];
-const title = "Style Guide";
+const title = "Øltyper";
 ---
 
 <Skeleton title={title}>
@@ -15,7 +15,7 @@ const title = "Style Guide";
           <RandomResponsiveImage />
           <header class="">
             <h1 class="font-sans text-4xl font-extrabold my-4">
-              <a href={`/style-guide/${style.frontmatter.slug}`}>
+              <a href={`/oeltyper/${style.frontmatter.slug}`}>
                 {style.frontmatter.title}
               </a>
             </h1>
