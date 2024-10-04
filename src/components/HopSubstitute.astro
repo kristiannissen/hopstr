@@ -1,0 +1,31 @@
+---
+/**
+ * HopSubstitute.astro
+ */
+
+const { hops } = Astro.props;
+
+// Split list of values to array
+let subs = hops.value?.split(",") || [];
+
+const slugify = (s) => {
+  let slug = s.toLowerCase().trim();
+  slug = slug.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  slug = slug.replace(/[^a-z0-9\s-]/g, " ").trim();
+  slug = slug.replace(/[\s-]+/g, "-");
+  return slug;
+};
+---
+
+<div>
+  <h3>Kan erstattes med</h3>
+  <ul>
+    {
+      subs.map((s) => (
+        <li>
+          <a href="`/humle/${slugify(s)}`">{s}</a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

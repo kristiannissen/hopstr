@@ -3,6 +3,7 @@ import Skeleton from "../../layouts/Skeleton.astro";
 import HopCharacteristics from "../../components/HopCharacteristics.astro";
 import RandomResponsiveImage from "../../components/RandomResponsiveImage.astro";
 
+import HopSubstitute from "../../components/HopSubstitute.astro";
 import LatestBrews from "../../components/LatestBrews.astro";
 
 export async function getStaticPaths() {
@@ -25,7 +26,6 @@ const filtered = [
   "Characteristics",
   "Purpose",
   "Total Oil Composition",
-  "Substitutes",
   "Beta Acid Composition",
   "Co-Humulone Composition",
 ];
@@ -34,6 +34,7 @@ const ch = hop.characteristics?.filter((c) => filtered.includes(c.name)) || [];
 // Find style guide
 const style = ["Style Guide"];
 const sg = hop.characteristics?.filter((c) => style.includes(c.name)) || [];
+const sub = hop.characteristics?.find((c) => c.name === "Substitutes") || [];
 ---
 
 <Skeleton title=`${hop.name} humle`>
@@ -57,7 +58,10 @@ const sg = hop.characteristics?.filter((c) => style.includes(c.name)) || [];
           ))
         }
       </article>
+      <article>
+        <HopSubstitute hops={sub} />
+      </article>
     </article>
-  <LatestBrews />
+    <LatestBrews />
   </div>
 </Skeleton>
