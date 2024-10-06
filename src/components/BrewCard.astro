@@ -4,17 +4,21 @@
  */
 
 import PubTime from "../components/PubTime.astro";
-import {Debug} from 'astro:components';
-const {brew} = Astro.props;
+import { Debug } from "astro:components";
+import { Image } from "astro:assets";
+const { brew, image } = Astro.props;
 const intro = brew.frontmatter.summary.split(" ").slice(0, 15);
+import beer from "../assets/images/sunset_beer.jpg";
 ---
+
 <hgroup class="font-extrabold">
-	<h1 class="font-serif text-4xl">
-              <a href={`/bryg/${brew.frontmatter.slug}`}>
-		{brew.frontmatter.title}</a></h1>
-	</h1>
-            <PubTime date={brew.frontmatter.published} />
-	    <p class="font-sans font-normal">{intro.join(' ')}...
-	    <br><a href={`/bryg/${brew.frontmatter.slug}`}>Læs mere</a>
-	    </p>
+  {image ? <Image src={beer} alt="øl solnedgabg" /> : <b>here</b>}
+  <h1 class="font-serif text-4xl">
+    <a href={`/bryg/${brew.frontmatter.slug}`}> {brew.frontmatter.title}</a>
+  </h1>
 </hgroup>
+<PubTime date={brew.frontmatter.published} />
+<p class="font-sans font-normal">
+  {intro.join(" ")}...
+  <br /><a href={`/bryg/${brew.frontmatter.slug}`}>Læs mere</a>
+</p>
