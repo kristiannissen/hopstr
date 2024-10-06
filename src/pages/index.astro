@@ -11,6 +11,7 @@
 import {Debug} from 'astro:components';
 import Skeleton from "../layouts/Skeleton.astro";
 import PubTime from "../components/PubTime.astro";
+import BrewCard from "../components/BrewCard.astro";
 let brews = (await Astro.glob("../content/brews/*.mdx")) || [];
 // Brew count
 let countBrews = brews.length;
@@ -25,31 +26,23 @@ brews = brews.slice(1);
 <section>
 	<div class="bg-[url('/assets/images/beer_glasses.jpg')] grid min-h-64 place-content-center">
 		<article class="bg-[#364037] p-6 font-serif text-white">
-			<header class="font-extrabold">
-				<h2 class="text-xl">Seneste opskrift</h2>
-				<h1 class="text-4xl">
-              <a href={`/bryg/${topBrew.frontmatter.slug}`}>
-				{topBrew.frontmatter.title}</a></h1>
-			</header>
-            <PubTime date={topBrew.frontmatter.published} />
-			<p class="font-sans">{topBrew.frontmatter.summary}</p>
+			<BrewCard brew={topBrew} />
 		</article>
 	</div>
 </section>
 	<section>
-	<div class="grid grid-cols-3 gap-4 place-content-center">
-		<div class="">+200 bryg</div>
-		<div class="">{countBrews} opskrifter</div>
-		<div class="">Humler</div>
-		<div class="">Øltyper</div>
+	<div class="grid grid-cols-3 gap-4 place-content-center bg-amber-950 text-white min-h-24 p-4 text-xl text-center">
+		<div><span class="font-serif block font-extrabold">+200</span> bryg</div>
+		<div><span class="font-serif block">333</span>Humler</div>
+		<div><span class="font-serif block">333</span>Øltyper</div>
 	</div>
 	</section>
-	<section>
-		<div class="grid grid-cols-2 gap-4">
+	<section class="p-4">
+		<div class="grid md:grid-cols-2 gap-4">
 		{
 			brews.map((brew) => (
 				<div class="">
-					{brew.frontmatter.published}
+					<BrewCard brew={brew} />
 				</div>
 			))
 		}

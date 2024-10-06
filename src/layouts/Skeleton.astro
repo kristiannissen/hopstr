@@ -19,14 +19,14 @@ import beerImg from "../assets/images/beerlabel.jpg";
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{title}</title>
   </head>
-  <body class="bg-[#e7d8b7]">
+  <body class="">
     <header class="max-w-full">Header</header>
     <main class="container mx-auto md:max-w-3xl min-h-screen">
       <slot />
     </main>
-    <footer class="static mt-20 bg-[#364037]">
+    <footer class="static mt-20 bg-[#F0E3C0] text-amber-950">
       <div class="static grid grid-cols-3 gap-4">
-        <div class="px-4 my-8">
+        <div class="p-4">
           <Image src={beerImg} alt="Skål!" width="200" height="200" class="" />
         </div>
         <div class="px-4 my-8">

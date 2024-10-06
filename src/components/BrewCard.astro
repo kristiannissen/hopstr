@@ -1,0 +1,20 @@
+---
+/**
+ * BrewCard.astro
+ */
+
+import PubTime from "../components/PubTime.astro";
+import {Debug} from 'astro:components';
+const {brew} = Astro.props;
+const intro = brew.frontmatter.summary.split(" ").slice(0, 15);
+---
+<hgroup class="font-extrabold">
+	<h1 class="font-serif text-4xl">
+              <a href={`/bryg/${brew.frontmatter.slug}`}>
+		{brew.frontmatter.title}</a></h1>
+	</h1>
+            <PubTime date={brew.frontmatter.published} />
+	    <p class="font-sans font-normal">{intro.join(' ')}...
+	    <br><a href={`/bryg/${brew.frontmatter.slug}`}>Læs mere</a>
+	    </p>
+</hgroup>
