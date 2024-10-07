@@ -12,7 +12,7 @@ import beer from "../assets/images/sunset_beer.jpg";
 ---
 
 <hgroup class="font-extrabold">
-  {image ? <Image src={beer} alt="øl solnedgabg" /> : <b>here</b>}
+  {image ? <Image src={beer} alt="øl solnedgabg" /> : ""}
   <h1 class="font-serif text-4xl">
     <a href={`/bryg/${brew.frontmatter.slug}`}> {brew.frontmatter.title}</a>
   </h1>
@@ -20,5 +20,5 @@ import beer from "../assets/images/sunset_beer.jpg";
 <PubTime date={brew.frontmatter.published} />
 <p class="font-sans font-normal">
   {intro.join(" ")}...
-  <br /><a href={`/bryg/${brew.frontmatter.slug}`}>Læs mere</a>
+  <br /><a href={`/bryg/${brew.frontmatter.slug}`} class="underline">Læs mere</a>
 </p>
