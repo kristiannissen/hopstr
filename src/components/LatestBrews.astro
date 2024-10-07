@@ -4,7 +4,10 @@
  */
 
 const brews = (await Astro.glob("../content/brews/*.mdx")) || [];
-import RandomResponsiveImage from "../components/RandomResponsiveImage.astro";
+brews.sort(
+  (a, b) =>
+    Date.parse(b.frontmatter.published) - Date.parse(a.frontmatter.published),
+);
 import PubTime from "../components/PubTime.astro";
 ---
 
@@ -12,12 +15,11 @@ import PubTime from "../components/PubTime.astro";
   <h2 class="font-sans text-2xl font-extrabold my-4">
     Seneste brygge opskrifter
   </h2>
-  <div class="overflow-x-scroll">
-    <div class="grid grid-cols-4 gap-2">
+  <div class="overflow-x-scroll max-w-prose">
+    <div class="grid grid-cols-8 gap-8">
       {
-        brews.slice(0, 2).map((brew) => (
+        brews.slice(0, 8).map((brew) => (
           <article>
-            <RandomResponsiveImage />
             <header class="">
               <PubTime date={brew.frontmatter.published} />
               <h1 class="font-sans font-extrabold my-4">

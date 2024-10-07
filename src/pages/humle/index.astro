@@ -3,7 +3,6 @@
 
 import Skeleton from "../../layouts/Skeleton.astro";
 
-import RandomResponsiveImage from "../../components/RandomResponsiveImage.astro";
 import Intro from "../../components/Intro.astro";
 
 const response = await fetch("https://hopstr.vercel.app/api/hops");
@@ -17,7 +16,6 @@ const title = "Humle Arkiv";
     {
       hops.hoplist.map((hop) => (
         <article class="min-h-fit min-w-fit mb-8">
-          <RandomResponsiveImage />
           <header class="">
             <h1 class="font-sans text-4xl font-extrabold my-4">
               <a href={`/humle/${hop.slug}`}>{hop.name}</a>

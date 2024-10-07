@@ -1,7 +1,6 @@
 ---
 import Skeleton from "../../layouts/Skeleton.astro";
 import HopCharacteristics from "../../components/HopCharacteristics.astro";
-import RandomResponsiveImage from "../../components/RandomResponsiveImage.astro";
 
 import HopSubstitute from "../../components/HopSubstitute.astro";
 import LatestBrews from "../../components/LatestBrews.astro";
@@ -43,7 +42,6 @@ const sub = hop.characteristics?.find((c) => c.name === "Substitutes") || [];
       <header>
         <h1 class="font-sans text-4xl font-extrabold my-4">{hop.name}</h1>
       </header>
-      <RandomResponsiveImage />
       <article class="mb-8">
         <h2 class="text-2xl font-sans font-semibold my-4">Beskrivelse</h2>
         <p>{hop.description ? hop.description : ""}</p>
