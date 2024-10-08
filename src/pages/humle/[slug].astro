@@ -37,21 +37,21 @@ const sub = hop.characteristics?.find((c) => c.name === "Substitutes") || [];
 ---
 
 <Skeleton title=`${hop.name} humle`>
-  <div class="max-w-prose px-4 md:px-0 lg:px-0">
-    <article class="mx-2 prose prose-slate">
+  <div class="">
+    <article class="">
       <header>
-        <h1 class="font-sans text-4xl font-extrabold my-4">{hop.name}</h1>
+        <h1 class="font-serif">{hop.name}</h1>
       </header>
       <article class="mb-8">
         <h2 class="text-2xl font-sans font-semibold my-4">Beskrivelse</h2>
         <p>{hop.description ? hop.description : ""}</p>
       </article>
-      <article class="mb-8 grid grid-cols-2 gap-2">
+      <article class="mb-8 flex flex-row">
         {
           ch.map((c) => (
             <>
-              <div>{c.name}</div>
-              <div>{c.value}</div>
+              <div class="basis-1/2">{c.name}</div>
+              <div class="basis-1/2">{c.value}</div>
             </>
           ))
         }

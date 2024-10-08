@@ -8,7 +8,9 @@ const { title, description } = Astro.props.frontmatter || Astro.props;
 
 // Image for footer
 import { Image } from "astro:assets";
-import beerImg from "../assets/images/beerlabel.jpg";
+// Fallback image
+import fb from "../assets/images/beer_in_glass.jpg";
+
 ---
 
 <!doctype html>
@@ -19,36 +21,35 @@ import beerImg from "../assets/images/beerlabel.jpg";
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="">
-    <header class="max-w-full h-8">
-    </header>
-    <main class="container mx-auto md:max-w-3xl min-h-screen">
+  <body class="md:flex md:flex-row bg-amber-50 text-amber-950">
+    <main class="md:basis-1/2 mx-auto">
       <slot />
     </main>
-    <footer class="static mt-20 bg-[#F0E3C0] text-amber-950">
-      <div class="static grid grid-cols-3 gap-4">
-        <div class="p-4">
-        </div>
-        <div class="px-4 my-8">
-          <h3>Det jeg brygger</h3>
-        </div>
-        <div class="px-4 my-8">
-          <nav>
-            <ul>
-              <li><a href="/">Forside</a></li>
-              <li><a href="/bryg">Bryg</a></li>
-              <li><a href="/humle">Humle typer</a></li>
-              <li><a href="/oeltyper">Øltyper</a></li>
-              <li><a href="/alt-det-andet">Alt det andet</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-      <div class="grid grid-cols-2 gap-4 border-t-2 border-slate-800">
-        <div class="px-4"></div>
-        <div class="px-4"></div>
-      </div>
+    <footer class="md:basis-1/2 bg-amber-400 md:h-screen">
+      <section class="p-4">
+        <header class="">
+          <h1 class="font-serif font-extrabold text-2xl text-amber-950">Det jeg brygger</h1>
+        </header>
+        <nav>
+          <ul>
+            <li><a href="/">Forside</a></li>
+            <li><a href="/opskrifter">Øl opskrifter</a></li>
+            <li><a href="/humle">Humle typer</a></li>
+            <li><a href="/oeltyper">Øltyper</a></li>
+            <li><a href="/alt-det-andet">Alt det andet</a></li>
+          </ul>
+        </nav>
+	<figure class="flex flex-row justify-center">
+		<Image src={fb} alt="Skål!" class="rounded-full max-w-64 max-h-64" />
+	</figure>
+      </section>
     </footer>
   </body>
 </html>

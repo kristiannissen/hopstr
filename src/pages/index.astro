@@ -21,37 +21,33 @@ brews.sort(
 );
 
 let topBrew = brews[0];
-brews = brews.slice(1);
+brews = brews.slice(1, 3);
 ---
 
 <Skeleton title="Det jeg brygger">
-  <section>
-    <div
-      class="bg-[url('/assets/images/beer_glasses.jpg')] grid min-h-64 place-content-center"
-    >
-      <article class="bg-[#364037] p-6 font-serif text-white">
-        <BrewCard brew={topBrew} image={false} />
-      </article>
-    </div>
-  </section>
-  <section>
-    <div
-      class="grid grid-cols-3 gap-4 place-content-center bg-amber-950 text-white min-h-24 p-4 text-xl text-center"
-    >
-      <div><span class="font-serif block font-extrabold">+200</span> bryg</div>
-      <div><span class="font-serif block">333</span>Humler</div>
-      <div><span class="font-serif block">333</span>Øltyper</div>
-    </div>
-  </section>
   <section class="p-4">
-    <div class="grid md:grid-cols-2 gap-4">
-      {
-        brews.map((brew) => (
-          <div class="">
-            <BrewCard brew={brew} image={true} />
-          </div>
-        ))
-      }
+    <article class="">
+      <BrewCard brew={topBrew} image={false} />
+    </article>
+  </section>
+  <!--
+  <section class="mb-4">
+    <div class="flex flex-row justify-center h-40font-serif text-4xl font-extrabold">
+      <div class="basis-1/3 content-around"><span class="block">+200</span> bryg</div>
+      <div class="basis-1/3 content-around"><span class="block">333</span>Humler</div>
+      <div class="basis-1/3 content-around"><span class="block">333</span>Øltyper</div>
     </div>
   </section>
+  //-->
+  <section class="p-4">
+    {
+      brews.map((brew) => (
+        <div class="">
+          <BrewCard brew={brew} image={true} />
+        </div>
+      ))
+    }
+  </section>
+  <section class="p-4">Humle</section>
+  <section class="p-4">Øltyper</section>
 </Skeleton>

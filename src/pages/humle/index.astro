@@ -8,24 +8,28 @@ import Intro from "../../components/Intro.astro";
 const response = await fetch("https://hopstr.vercel.app/api/hops");
 const hops = await response.json();
 
-const title = "Humle Arkiv";
+const title = "Humle typer";
 ---
 
 <Skeleton title={title}>
-  <div class="md:max-w-3xl p-4 grid md:grid-cols-2 md:gap-2">
+  <section class="p-4">
+    <hgroup>
+      <h1>{title}</h1>
+      <p>Her finder du XXX forskellige humle typer.</p>
+    </hgroup>
     {
       hops.hoplist.map((hop) => (
-        <article class="min-h-fit min-w-fit mb-8">
+        <article class="">
           <header class="">
-            <h1 class="font-sans text-4xl font-extrabold my-4">
+            <h1 class="font-serif">
               <a href={`/humle/${hop.slug}`}>{hop.name}</a>
             </h1>
-            <p class="font-sans">
+            <p class="">
               <Intro text={hop.description} words="20" />
             </p>
           </header>
         </article>
       ))
     }
-  </div>
+  </section>
 </Skeleton>

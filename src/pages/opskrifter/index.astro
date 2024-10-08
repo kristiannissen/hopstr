@@ -10,17 +10,19 @@ brews.sort(
     Date.parse(b.frontmatter.published) - Date.parse(a.frontmatter.published),
 );
 
-const title = "Bryg arkiv";
+const title = "Øl opskrifter";
 ---
 
 <Skeleton title={title}>
-  <div class="md:max-w-3xl p-4 grid md:grid-cols-2 md:gap-2">
+  <section class="p-4 mx-auto">
+    <hgroup class="mb-4">
+      <h1 class="font-serif text-4xl">{title}</h1>
+      <p></p>
+    </hgroup>
     {
       brews.map((brew) => (
-        <article class="min-h-fit min-w-fit mb-8">
           <BrewCard brew={brew} image={false} />
-        </article>
       ))
     }
-  </div>
+  </section>
 </Skeleton>
