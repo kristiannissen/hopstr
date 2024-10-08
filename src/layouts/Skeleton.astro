@@ -4,7 +4,7 @@ import "../styles/base.css";
 import Navigation from "../components/Navigation.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 
-const { title } = Astro.props.frontmatter || Astro.props;
+const { title, description } = Astro.props.frontmatter || Astro.props;
 
 // Image for footer
 import { Image } from "astro:assets";
@@ -12,12 +12,14 @@ import beerImg from "../assets/images/beerlabel.jpg";
 ---
 
 <!doctype html>
-<html lang="da">
+<html amp lang="da">
   <head>
     <meta charset="utf-8" />
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{title}</title>
+    <meta name="description" content={description} />
   </head>
   <body class="">
     <header class="max-w-full h-8">
@@ -28,7 +30,6 @@ import beerImg from "../assets/images/beerlabel.jpg";
     <footer class="static mt-20 bg-[#F0E3C0] text-amber-950">
       <div class="static grid grid-cols-3 gap-4">
         <div class="p-4">
-          <Image src={beerImg} alt="Skål!" width="200" height="200" class="" />
         </div>
         <div class="px-4 my-8">
           <h3>Det jeg brygger</h3>

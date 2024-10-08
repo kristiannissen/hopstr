@@ -2,17 +2,17 @@
 /* RandomResponsiveImage */
 
 import { Image } from "astro:assets";
-import hopCone from "../assets/images/hop_cone.jpg";
+// Get 5 images
+import b01 from "../assets/images/beer_01.jpg"
+import b02 from "../assets/images/beer_01.jpg"
+import b03 from "../assets/images/beer_01.jpg"
+import b04 from "../assets/images/beer_01.jpg"
+import b05 from "../assets/images/beer_01.jpg"
+
+let images = [b01, b02, b03, b04, b05];
+let img = images[Math.floor(Math.random() * images.length)];
+
+import {Debug} from "astro:assets";
 ---
 
-<Image src={hopCone} alt="humle" />
-
-<!--
-<img
-  src="https://placehold.co/384"
-  srcset="https://placehold.co/384 384w, https://placehold.co/544 544w"
-  sizes="(max-width: 640px) 384px, 544px"
-  alt="humle"
-  class="rounded"
-/>
-//-->
+<Image src={img} alt="humle" />
