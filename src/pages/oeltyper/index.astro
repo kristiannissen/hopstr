@@ -6,23 +6,27 @@ import RandomResponsiveImage from "../../components/RandomResponsiveImage.astro"
 const styles = (await Astro.glob("../../content/style-guide/*.mdx")) || [];
 const title = "Øltyper";
 
-import {Image} from 'astro:assets';
-import icon from '../../assets/images/glass_with_beer.jpg';
+import { Image } from "astro:assets";
+import icon from "../../assets/images/glass_with_beer.jpg";
 ---
 
 <Skeleton title={title}>
   <section class="p-4 mx-auto">
     <hgroup class="mb-4">
-	    <h1 class="font-serif text-4xl">{title}</h1>
+      <h1 class="font-serif text-4xl">{title}</h1>
       <p></p>
     </hgroup>
     {
       styles.map((style) => (
         <article class="mb-4">
           <header class="flex flex-row gap-4 place-items-center">
-		<figure class="basis-16">
-			<Image src={icon} alt="Skål!" class="rounded-full max-w-16 max-h-16" />
-		</figure>
+            <figure class="basis-16">
+              <Image
+                src={icon}
+                alt="Skål!"
+                class="rounded-full max-w-16 max-h-16"
+              />
+            </figure>
 
             <h1 class="font-serif text-2xl">
               <a href={`/oeltyper/${style.frontmatter.slug}`}>

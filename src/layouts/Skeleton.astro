@@ -10,7 +10,6 @@ const { title, description } = Astro.props.frontmatter || Astro.props;
 import { Image } from "astro:assets";
 // Fallback image
 import fb from "../assets/images/beer_in_glass.jpg";
-
 ---
 
 <!doctype html>
@@ -35,7 +34,9 @@ import fb from "../assets/images/beer_in_glass.jpg";
     <footer class="md:basis-1/2 bg-amber-400 md:h-screen">
       <section class="p-4">
         <header class="">
-          <h1 class="font-serif font-extrabold text-2xl text-amber-950">Det jeg brygger</h1>
+          <h1 class="font-serif font-extrabold text-2xl text-amber-950">
+            Det jeg brygger
+          </h1>
         </header>
         <nav>
           <ul>
@@ -46,9 +47,9 @@ import fb from "../assets/images/beer_in_glass.jpg";
             <li><a href="/alt-det-andet">Alt det andet</a></li>
           </ul>
         </nav>
-	<figure class="flex flex-row justify-center">
-		<Image src={fb} alt="Skål!" class="rounded-full max-w-64 max-h-64" />
-	</figure>
+        <figure class="flex flex-row justify-center">
+          <Image src={fb} alt="Skål!" class="rounded-full max-w-64 max-h-64" />
+        </figure>
       </section>
     </footer>
   </body>

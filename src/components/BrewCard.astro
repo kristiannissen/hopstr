@@ -10,20 +10,21 @@ const { brew, image } = Astro.props;
 const intro = brew.frontmatter.summary.split(" ").slice(0, 15);
 import beer from "../assets/images/sunset_beer.jpg";
 ---
+
 <article class="mb-8">
-<hgroup class="">
-  <!-- {image ? <Image src={beer} alt="øl solnedgabg" /> : ""} //-->
-  <h1 class="font-serif text-2xl">
-    <a href={`/opskrifter/${brew.frontmatter.slug}`} class="no-underline">
-      {brew.frontmatter.title}</a
+  <hgroup class="">
+    <!-- {image ? <Image src={beer} alt="øl solnedgabg" /> : ""} //-->
+    <h1 class="font-serif text-2xl">
+      <a href={`/opskrifter/${brew.frontmatter.slug}`} class="no-underline">
+        {brew.frontmatter.title}</a
+      >
+    </h1>
+  </hgroup>
+  <PubTime date={brew.frontmatter.published} />
+  <p class="font-sans font-normal">
+    {intro.join(" ")}...
+    <br /><a href={`/opskrifter/${brew.frontmatter.slug}`} class="underline"
+      >Læs mere</a
     >
-  </h1>
-</hgroup>
-<PubTime date={brew.frontmatter.published} />
-<p class="font-sans font-normal">
-  {intro.join(" ")}...
-  <br /><a href={`/opskrifter/${brew.frontmatter.slug}`} class="underline"
-    >Læs mere</a
-  >
-</p>
+  </p>
 </article>

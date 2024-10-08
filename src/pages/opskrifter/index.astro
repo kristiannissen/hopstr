@@ -19,10 +19,6 @@ const title = "Øl opskrifter";
       <h1 class="font-serif text-4xl">{title}</h1>
       <p></p>
     </hgroup>
-    {
-      brews.map((brew) => (
-          <BrewCard brew={brew} image={false} />
-      ))
-    }
+    {brews.map((brew) => <BrewCard brew={brew} image={false} />)}
   </section>
 </Skeleton>
