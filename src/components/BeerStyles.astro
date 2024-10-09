@@ -1,0 +1,28 @@
+---
+/**
+ * Beer Styles Component
+ */
+
+import { Debug } from "astro:components";
+let bs = (await Astro.glob("../content/style-guide/*.mdx")) || [];
+// Sort styles
+bs.sort((a, b) => b.frontmatter.title - a.frontmatter.title);
+
+// Slice array by count or fallback
+const { count } = Astro.props || 6;
+---
+
+<section class={`grid grid-cols-${count} gap-4 place-content-evenly h-32`}>
+  {
+    bs.slice(0, count).map((s) => (
+      <article class="max-w-40">
+        <h1 class="font-serif font-semibold">
+          <a href={`/oeltyper/${s.frontmatter.slug}`}>{s.frontmatter.title}</a>
+        </h1>
+      </article>
+    ))
+  }
+  <div class="">
+    <a href="/oeltyper" class="underline">Se flere øltyper</a>
+  </div>
+</section>

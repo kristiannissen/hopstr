@@ -10,7 +10,7 @@
 
 import { Debug } from "astro:components";
 import Skeleton from "../layouts/Skeleton.astro";
-import PubTime from "../components/PubTime.astro";
+import BeerStyles from "../components/BeerStyles.astro";
 import BrewCard from "../components/BrewCard.astro";
 let brews = (await Astro.glob("../content/brews/*.mdx")) || [];
 // Brew count
@@ -28,18 +28,17 @@ brews = brews.slice(1, 3);
   <section class="p-4 mx-auto">
     <BrewCard brew={topBrew} image={false} />
   </section>
-  <!--
-  <section class="mb-4">
-    <div class="flex flex-row justify-center h-40font-serif text-4xl font-extrabold">
-      <div class="basis-1/3 content-around"><span class="block">+200</span> bryg</div>
-      <div class="basis-1/3 content-around"><span class="block">333</span>Humler</div>
-      <div class="basis-1/3 content-around"><span class="block">333</span>Øltyper</div>
-    </div>
-  </section>
-  //-->
+
+  <!-- List of beer styles //-->
+  <div class="p-4">
+    <hgroup>
+      <h2 class="font-semibold">Øltyper</h2>
+      <p>Du kan læse om XX øltyper</p>
+    </hgroup>
+    <BeerStyles count={3} />
+  </div>
   <section class="p-4 mx-auto">
     {brews.map((brew) => <BrewCard brew={brew} image={true} />)}
   </section>
   <section class="p-4">Humle</section>
-  <section class="p-4">Øltyper</section>
 </Skeleton>
