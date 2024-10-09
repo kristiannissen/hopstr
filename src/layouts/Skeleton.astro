@@ -13,7 +13,7 @@ import fb from "../assets/images/beer_in_glass.jpg";
 ---
 
 <!doctype html>
-<html lang="da">
+<html lang="da" class="h-dvh">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,11 +27,11 @@ import fb from "../assets/images/beer_in_glass.jpg";
       rel="stylesheet"
     />
   </head>
-  <body class="md:flex md:flex-row bg-amber-50 text-amber-950">
+  <body class="md:flex md:flex-row bg-amber-50 text-amber-950 min-h-full">
     <main class="md:basis-1/2 mx-auto">
       <slot />
     </main>
-    <footer class="md:basis-1/2 bg-amber-400 md:h-screen">
+    <footer class="md:basis-1/2 bg-amber-400">
       <section class="p-4">
         <header class="">
           <h1 class="font-serif font-extrabold text-2xl text-amber-950">
