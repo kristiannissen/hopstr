@@ -4,6 +4,9 @@
  */
 
 import { Debug } from "astro:components";
+import { Image } from "astro:assets";
+import icon from "../assets/images/glass_with_beer.jpg";
+
 let bs = (await Astro.glob("../content/style-guide/*.mdx")) || [];
 // Sort styles
 bs.sort((a, b) => b.frontmatter.title - a.frontmatter.title);
@@ -12,17 +15,19 @@ bs.sort((a, b) => b.frontmatter.title - a.frontmatter.title);
 const { count } = Astro.props || 6;
 ---
 
-<section class={`grid grid-cols-${count} gap-4 place-content-evenly h-32`}>
+<section class="flex overflow-x-auto">
   {
     bs.slice(0, count).map((s) => (
-      <article class="max-w-40">
-        <h1 class="font-serif font-semibold">
+    <div class="flex-none w-32">  
+    <article class="flex flex-col items-center">
+	      <figure class="">
+	      	<Image src={icon} alt="Øl i glas" class="w-16 h-16 rounded-full" />
+	      </figure>
+	      <h1 class="font-serif font-semibold">
           <a href={`/oeltyper/${s.frontmatter.slug}`}>{s.frontmatter.title}</a>
         </h1>
       </article>
+    </div>
     ))
   }
-  <div class="">
-    <a href="/oeltyper" class="underline">Se flere øltyper</a>
-  </div>
 </section>

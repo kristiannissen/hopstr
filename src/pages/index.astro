@@ -31,14 +31,9 @@ brews = brews.slice(1, 3);
 
   <!-- List of beer styles //-->
   <div class="p-4">
-    <hgroup>
-      <h2 class="font-semibold">Øltyper</h2>
-      <p>Du kan læse om XX øltyper</p>
-    </hgroup>
-    <BeerStyles count={3} />
+    <BeerStyles count={5} />
   </div>
   <section class="p-4 mx-auto">
     {brews.map((brew) => <BrewCard brew={brew} image={true} />)}
   </section>
-  <section class="p-4">Humle</section>
 </Skeleton>
