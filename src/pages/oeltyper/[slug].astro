@@ -22,11 +22,14 @@ let desc = `Læs mere om ${style.frontmatter.title}`;
 ---
 
 <Skeleton title={style.frontmatter.title} description={desc} themeImage={img}>
-  <div class="p-4 prose prose-amber-950 mx-auto">
+  <section class="p-4 prose prose-amber-950 mx-auto">
     <article class="prose prose-slate">
       <h1 class="font-serif">{style.frontmatter.title}</h1>
       <Content />
     </article>
+  </section>
+  <div class="p-4 h-40">
+    <h2 class="font-serif font-extrabold mb-4 text-xl">Seneste opskrifter</h2>
     <LatestBrews />
   </div>
 </Skeleton>

@@ -9,28 +9,23 @@ brews.sort(
     Date.parse(b.frontmatter.published) - Date.parse(a.frontmatter.published),
 );
 import PubTime from "../components/PubTime.astro";
+
+// Slice array
+const { count } = Astro.props || 4;
 ---
 
-<div class="">
-  <h2 class="font-sans text-2xl font-extrabold my-4">
-    Seneste brygge opskrifter
-  </h2>
-  <div class="overflow-x-scroll max-w-prose">
-    <div class="grid grid-cols-8 gap-8">
-      {
-        brews.slice(0, 8).map((brew) => (
-          <article>
-            <header class="">
-              <PubTime date={brew.frontmatter.published} />
-              <h1 class="font-sans font-extrabold my-4">
-                <a href={`/bryg/${brew.frontmatter.slug}`}>
-                  {brew.frontmatter.title}
-                </a>
-              </h1>
-            </header>
-          </article>
-        ))
-      }
-    </div>
-  </div>
-</div>
+<section class="flex overflow-x-auto">
+  {
+    brews.slice(0, count).map((b) => (
+      <div class="flex-none w-36 mr-4 last:mr-0">
+        <article class="flex flex-col items-center">
+          <h1 class="font-serif font-semibold">
+            <a href={`/opskrifter/${b.frontmatter.slug}`}>
+              {b.frontmatter.title}
+            </a>
+          </h1>
+        </article>
+      </div>
+    ))
+  }
+</section>
