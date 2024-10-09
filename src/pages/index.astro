@@ -22,9 +22,11 @@ brews.sort(
 
 let topBrew = brews[0];
 brews = brews.slice(1, 3);
+// Theme Image
+import img from "../assets/images/beer_in_glass.jpg";
 ---
 
-<Skeleton title="Det jeg brygger">
+<Skeleton title="Det jeg brygger" description="" themeImage={img}>
   <section class="p-4 mx-auto">
     <BrewCard brew={topBrew} image={false} />
   </section>

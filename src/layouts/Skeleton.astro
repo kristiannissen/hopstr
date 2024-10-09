@@ -4,12 +4,15 @@ import "../styles/base.css";
 import Navigation from "../components/Navigation.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 
-const { title, description } = Astro.props.frontmatter || Astro.props;
+const { title, description, themeImage } =
+  Astro.props.frontmatter || Astro.props;
 
 // Image for footer
 import { Image } from "astro:assets";
-// Fallback image
-import fb from "../assets/images/beer_in_glass.jpg";
+
+import ti from "../assets/images/beer_in_glass.jpg";
+
+let img = themeImage ? themeImage : ti;
 ---
 
 <!doctype html>
@@ -47,7 +50,7 @@ import fb from "../assets/images/beer_in_glass.jpg";
           </ul>
         </nav>
         <figure class="flex flex-row justify-center items-start h-full mt-40">
-          <Image src={fb} alt="Skål!" class="rounded-full max-w-64 max-h-64" />
+          <Image src={img} alt="Skål!" class="rounded-full max-w-64 max-h-64" />
         </figure>
       </section>
     </footer>
