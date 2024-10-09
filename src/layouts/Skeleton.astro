@@ -28,12 +28,12 @@ import fb from "../assets/images/beer_in_glass.jpg";
     />
   </head>
   <body class="md:flex md:flex-row bg-amber-50 text-amber-950 min-h-full">
-    <main class="md:basis-1/2 mx-auto">
+    <main class="md:basis-1/2 mx-auto min-h-full">
       <slot />
     </main>
-    <footer class="md:basis-1/2 bg-amber-400">
-      <section class="p-4">
-        <header class="">
+    <footer class="md:basis-1/2 bg-amber-400 min-h-full">
+      <section class="p-4 flex flex-col h-full">
+        <header class="flex-none">
           <h1 class="font-serif font-extrabold text-2xl text-amber-950">
             Det jeg brygger
           </h1>
@@ -46,7 +46,7 @@ import fb from "../assets/images/beer_in_glass.jpg";
             <li><a href="/alt-det-andet">Alt det andet</a></li>
           </ul>
         </nav>
-        <figure class="flex flex-row justify-center">
+        <figure class="flex flex-row justify-center items-start h-full mt-40">
           <Image src={fb} alt="Skål!" class="rounded-full max-w-64 max-h-64" />
         </figure>
       </section>
