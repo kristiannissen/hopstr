@@ -3,7 +3,6 @@
  * BrewCard.astro
  */
 
-import PubTime from "../components/PubTime.astro";
 import { Debug } from "astro:components";
 import { Image } from "astro:assets";
 const { brew, image } = Astro.props;
@@ -20,7 +19,6 @@ import beer from "../assets/images/sunset_beer.jpg";
       >
     </h1>
   </hgroup>
-  <PubTime date={brew.frontmatter.published} />
   <p class="font-sans font-normal">
     {intro.join(" ")}...
     <br /><a href={`/opskrifter/${brew.frontmatter.slug}`} class="underline"

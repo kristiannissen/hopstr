@@ -11,7 +11,7 @@ import icon from "../../assets/images/glass_with_beer.jpg";
 ---
 
 <Skeleton title={title}>
-  <section class="p-4 mx-auto">
+  <section class="p-4 mx-auto prose prose-amber-950">
     <hgroup class="mb-4">
       <h1 class="font-serif text-4xl">{title}</h1>
       <p></p>
@@ -29,7 +29,7 @@ import icon from "../../assets/images/glass_with_beer.jpg";
             </figure>
 
             <h1 class="font-serif text-2xl">
-              <a href={`/oeltyper/${style.frontmatter.slug}`}>
+              <a href={`/oeltyper/${style.frontmatter.slug}`} class="no-underline">
                 {style.frontmatter.title}
               </a>
             </h1>
