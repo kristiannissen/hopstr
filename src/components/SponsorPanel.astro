@@ -4,16 +4,15 @@
  */
 
 import { Image } from "astro:assets";
-import Cone from "../assets/images/hop_cone.jpg";
+import Cone from "../assets/images/hop_cone.png";
 
 const { sponsor } = Astro.props;
 ---
-
 <div class="relative rounded-xl overflow-auto p-8">
   <div
     class="overflow-visible relative max-w-sm mx-auto bg-white shadow-lg ring-1 ring-black/5 rounded-xl flex items-center gap-6 dark:bg-slate-800 dark:highlight-white/5"
   >
-    <img class="absolute -left-6 w-24 h-24 rounded-full shadow-lg" src={Cone} />
+    <Image class="absolute -left-6 w-24 h-24 rounded-full shadow-lg" src={Cone} alt="humle" />
     <div class="flex flex-col py-5 pl-24">
       <span
         class="absolute top-0 end-2 -my-4 bg-lime-600 rounded-lg px-4 text-white shadow-lg"
