@@ -20,19 +20,35 @@ const { Content } = Astro.props.brew;
 
 <Skeleton title={brew.frontmatter.title} description={brew.frontmatter.summary}>
   <section class="p-4 prose prose-amber-950 mx-auto">
-    <article class="">
+    <article class="mb-16">
       <PubTime date={brew.frontmatter.published} />
       <h1 class="font-serif">{brew.frontmatter.title}</h1>
       <Content />
     </article>
+    <div class="flex flex-row">
+      <div class="basis-3/4">
+        <b>
+          <a href="/opskrifter" class="no-underline"
+            >Læs flere øl opskrifter her</a
+          >
+        </b>
+      </div>
+      <div class="basis-1/4 w-8">
+        <a href="/opskrifter">
+          <span class="material-symbols-outlined w-8 h-8 right-0">
+            chevron_right
+          </span>
+        </a>
+      </div>
+    </div>
   </section>
 
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Blog",
-      "@id": "https://detjegbrygger.dk/bryg",
-      "mainEntryOfPage": "https://detjegbrygger.dk/bryg",
+      "@id": "https://detjegbrygger.dk/opskrifter",
+      "mainEntryOfPage": "https://detjegbrygger.dk/opskrifter",
       "name": "",
       "description": "",
       "publisher": {},

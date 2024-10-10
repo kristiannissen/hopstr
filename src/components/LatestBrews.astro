@@ -14,7 +14,15 @@ import PubTime from "../components/PubTime.astro";
 const { count } = Astro.props || 4;
 ---
 
-<section class="flex overflow-x-auto">
+<section
+  class="flex overflow-x-auto [&::-webkit-scrollbar]:w-1
+  [&::-webkit-scrollbar-track]:rounded-full
+  [&::-webkit-scrollbar-track]:bg-gray-100
+  [&::-webkit-scrollbar-thumb]:rounded-full
+  [&::-webkit-scrollbar-thumb]:bg-gray-300
+  dark:[&::-webkit-scrollbar-track]:bg-neutral-700
+  dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
+>
   {
     brews.slice(0, count).map((b) => (
       <div class="flex-none w-36 mr-4 last:mr-0">
