@@ -18,12 +18,14 @@ const { count } = Astro.props || 6;
 <section class="flex overflow-x-auto">
   {
     bs.slice(0, count).map((s) => (
-      <div class="flex-none w-32">
-        <article class="flex flex-col items-center">
-          <a href={`/oeltyper/${s.frontmatter.slug}`}>
-            <Image src={icon} alt="Øl i glas" class="w-16 h-16 rounded-full" />
-            <h1 class="font-serif font-semibold">{s.frontmatter.title}</h1>
-          </a>
+      <div class="flex-none w-36 mr-4">
+        <article class="flex flex-col">
+          <Image src={icon} alt="Øl i glas" class="w-16 h-16 rounded-full" />
+          <h1 class="font-serif font-semibold">
+            <a href={`/oeltyper/${s.frontmatter.slug}`} class="">
+              {s.frontmatter.title}
+            </a>
+          </h1>
         </article>
       </div>
     ))
