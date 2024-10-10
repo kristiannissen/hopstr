@@ -32,10 +32,26 @@ import img from "../assets/images/beer_in_glass.jpg";
   </section>
 
   <!-- List of beer styles //-->
-  <div class="p-4 w-full">
+  <div class="p-4">
     <BeerStyles count={5} />
   </div>
   <section class="p-4 mx-auto">
     {brews.map((brew) => <BrewCard brew={brew} image={true} />)}
   </section>
+  <div class="flex flex-row">
+    <div class="basis-3/4">
+      <b>
+        <a href="/opskrifter" class="no-underline"
+          >Læs flere øl opskrifter her</a
+        >
+      </b>
+    </div>
+    <div class="basis-1/4 w-8">
+      <a href="/opskrifter">
+        <span class="material-symbols-outlined w-8 h-8 right-0">
+          chevron_right
+        </span>
+      </a>
+    </div>
+  </div>
 </Skeleton>
