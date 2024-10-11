@@ -15,19 +15,29 @@ bs.sort((a, b) => b.frontmatter.title - a.frontmatter.title);
 const { count } = Astro.props || 6;
 ---
 
-<section class="flex overflow-x-auto">
-  {
-    bs.slice(0, count).map((s) => (
-      <div class="flex-none w-36 mr-4">
-        <article class="flex flex-col">
-          <Image src={icon} alt="Øl i glas" class="w-16 h-16 rounded-full" />
-          <h1 class="font-serif font-semibold">
-            <a href={`/oeltyper/${s.frontmatter.slug}`} class="">
-              {s.frontmatter.title}
-            </a>
-          </h1>
-        </article>
-      </div>
-    ))
-  }
-</section>
+<div class="mx-auto">
+  <div
+    class="overflow-x-auto flex overflow-y-hidden [&::-webkit-scrollbar]:w-1
+  [&::-webkit-scrollbar-track]:rounded-full
+  [&::-webkit-scrollbar-track]:bg-gray-100
+  [&::-webkit-scrollbar-thumb]:rounded-full
+  [&::-webkit-scrollbar-thumb]:bg-gray-300
+  dark:[&::-webkit-scrollbar-track]:bg-neutral-700
+  dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
+  >
+    {
+      bs.slice(0, count).map((b) => (
+        <div class="flex-none mb-4">
+          <div class="flex flex-col items-center justify-center gap-3 w-32 h-fit mr-2 last:mr-0">
+            <Image class="w-16 h-16 rounded-full" src={icon} alt="Øl" />
+            <h1 class="font-serif font-extrabold">
+              <a href={`/oeltyper/${b.frontmatter.slug}`}>
+                {b.frontmatter.title}
+              </a>
+            </h1>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
