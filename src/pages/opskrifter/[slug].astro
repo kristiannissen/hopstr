@@ -3,6 +3,8 @@ import Skeleton from "../../layouts/Skeleton.astro";
 
 import PubTime from "../../components/PubTime.astro";
 import { Debug } from "astro:components";
+import Button from "../../components/Button.astro";
+
 export async function getStaticPaths() {
   const brews = (await Astro.glob("../../content/brews/*.mdx")) || [];
 
@@ -25,21 +27,8 @@ const { Content } = Astro.props.brew;
       <h1 class="font-serif">{brew.frontmatter.title}</h1>
       <Content />
     </article>
-    <div class="flex flex-row">
-      <div class="basis-3/4">
-        <b>
-          <a href="/opskrifter" class="no-underline"
-            >Læs flere øl opskrifter her</a
-          >
-        </b>
-      </div>
-      <div class="basis-1/4 w-8">
-        <a href="/opskrifter">
-          <span class="material-symbols-outlined w-8 h-8 right-0">
-            chevron_right
-          </span>
-        </a>
-      </div>
+    <div class="">
+        <Button text="Læs flere opskrifter" url="/opskrifter" />
     </div>
   </section>
 

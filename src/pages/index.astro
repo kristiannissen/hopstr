@@ -12,6 +12,7 @@ import { Debug } from "astro:components";
 import Skeleton from "../layouts/Skeleton.astro";
 import BeerStyles from "../components/BeerStyles.astro";
 import BrewCard from "../components/BrewCard.astro";
+import Button from "../components/Button.astro";
 let brews = (await Astro.glob("../content/brews/*.mdx")) || [];
 // Brew count
 let countBrews = brews.length;
@@ -40,14 +41,7 @@ import img from "../assets/images/beer_in_glass.jpg";
     {brews.map((brew) => <BrewCard brew={brew} image={true} />)}
   </section>
 
-  <div
-    class="flex flex-row gap-3 bg-amber-200 rounded-full max-w-fit pl-4 mx-auto"
-  >
-    <strong class=""><a href="/opskrifter">Læs flere opskrifter</a></strong>
-    <span class="w-8 h-8 bg-amber-600 rounded-full">
-      <span class="material-symbols-outlined text-amber-50 mt-1 ml-1">
-        chevron_right
-      </span>
-    </span>
-  </div>
+	<div class="">
+		<Button text="Læs flere opskrifter" url="/opskrifter" />
+	</div>
 </Skeleton>
