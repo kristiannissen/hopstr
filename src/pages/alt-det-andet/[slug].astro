@@ -1,0 +1,30 @@
+---
+import Skeleton from "../../layouts/Skeleton.astro";
+
+export async function getStaticPaths() {
+  const stuff = (await Astro.glob("../../content/other-stuff/*.mdx")) || [];
+
+  return stuff.map((stuff) => {
+    return {
+      params: { slug: stuff.frontmatter.slug },
+      props: { stuff },
+    };
+  });
+}
+// Theme image
+import img from "../../assets/images/glass_with_beer.jpg";
+
+const { stuff } = Astro.props;
+const { Content } = Astro.props.stuff;
+// Create meta desc
+let desc = "";
+---
+
+<Skeleton title={stuff.frontmatter.title} description={desc} themeImage={img}>
+  <section class="p-4 prose prose-amber-950 mx-auto">
+    <article class="prose prose-slate">
+      <h1 class="font-serif">{stuff.frontmatter.title}</h1>
+      <Content />
+    </article>
+  </section>
+</Skeleton>
