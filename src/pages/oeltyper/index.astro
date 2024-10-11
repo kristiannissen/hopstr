@@ -1,16 +1,21 @@
 ---
 import Skeleton from "../../layouts/Skeleton.astro";
 
-import RandomResponsiveImage from "../../components/RandomResponsiveImage.astro";
-
 const styles = (await Astro.glob("../../content/style-guide/*.mdx")) || [];
 const title = "Øltyper";
 
+styles.sort(
+  (a, b) =>
+    a.frontmatter.title - b.frontmatter.title,
+);
+
 import { Image } from "astro:assets";
 import icon from "../../assets/images/glass_with_beer.jpg";
+
+let desc = `Her finder du detaljerede informationer om ${styles.length} øltyper`;
 ---
 
-<Skeleton title={title}>
+<Skeleton title={title} description={desc}>
   <section class="p-4 mx-auto prose prose-amber-950">
     <hgroup class="mb-4">
       <h1 class="font-serif text-4xl">{title}</h1>
