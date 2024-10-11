@@ -3,21 +3,22 @@
  * Button
  */
 
-const {text, url} = Astro.props
+const { text, url } = Astro.props;
 ---
 
-  <div id="button"
-    class="flex flex-row gap-3 bg-amber-200 rounded-full max-w-fit pl-4 mx-auto cursor-pointer"
-  >
-    <strong class="">{text}</strong>
-    <span class="w-8 h-8 bg-amber-600 rounded-full">
-      <span class="material-symbols-outlined text-amber-50 mt-1 ml-1">
-        chevron_right
-      </span>
+<div
+  id="button"
+  class="flex flex-row gap-3 bg-amber-200 rounded-full max-w-fit pl-4 mx-auto cursor-pointer"
+>
+  <strong class="">{text}</strong>
+  <span class="w-8 h-8 bg-amber-600 rounded-full">
+    <span class="material-symbols-outlined text-amber-50 mt-1 ml-1">
+      chevron_right
     </span>
-  </div>
+  </span>
+</div>
 
 <script>
-	let b = document.querySelector("#button");
-	b.addEventListener("click", (e) => false);
+  let b = document.querySelector("#button");
+  b.addEventListener("click", (e) => false);
 </script>

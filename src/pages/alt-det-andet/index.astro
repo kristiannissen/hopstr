@@ -1,9 +1,29 @@
 ---
 import Skeleton from "../../layouts/Skeleton.astro";
 
-const title = "Gær";
+const stuff = (await Astro.glob("../../content/other-stuff/*.mdx")) || [];
+
+stuff.sort(
+  (a, b) =>
+    Date.parse(b.frontmatter.published) - Date.parse(a.frontmatter.published),
+);
+
+const title = "Alt det andet";
 ---
 
 <Skeleton title={title}>
-  <div class="md:max-w-3xl p-4 grid md:grid-cols-2 md:gap-2"></div>
+  <section class="p-4 mx-auto prose prose-amber-950">
+    <hgroup class="mb-4">
+      <h1 class="font-serif text-4xl">{title}</h1>
+      <p></p>
+    </hgroup>
+    {
+      stuff.map((s) => (
+        <article class="pb-4">
+          <h1 class="font-serif text-2xl">{s.frontmatter.title}</h1>
+          <a href={`/alt-det-andet/${s.frontmatter.slug}`}>Læs mere</a>
+        </article>
+      ))
+    }
+  </section>
 </Skeleton>
