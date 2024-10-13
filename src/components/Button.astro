@@ -7,7 +7,7 @@ const { text, url } = Astro.props;
 ---
 
 <div
-  id="button"
+  id="button" data-url={url}
   class="flex flex-row gap-3 bg-amber-200 rounded-full max-w-fit pl-4 mx-auto cursor-pointer"
 >
   <strong class="">{text}</strong>
@@ -20,5 +20,8 @@ const { text, url } = Astro.props;
 
 <script>
   let b = document.querySelector("#button");
-  b.addEventListener("click", (e) => false);
+  b.addEventListener("click", (e) => {
+	console.log(b)
+location.href = b.getAttribute("data-url")
+});
 </script>
