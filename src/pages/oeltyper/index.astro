@@ -4,10 +4,7 @@ import Skeleton from "../../layouts/Skeleton.astro";
 const styles = (await Astro.glob("../../content/style-guide/*.mdx")) || [];
 const title = "Øltyper";
 
-styles.sort(
-  (a, b) =>
-    a.frontmatter.title - b.frontmatter.title,
-);
+styles.sort((a, b) => a.frontmatter.title - b.frontmatter.title);
 
 import { Image } from "astro:assets";
 import icon from "../../assets/images/glass_with_beer.jpg";
