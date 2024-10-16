@@ -20,7 +20,8 @@ const title = "Alt det andet";
     {
       stuff.map((s) => (
         <article class="pb-4">
-          <h1 class="font-serif text-2xl">{s.frontmatter.title}</h1>
+          <h1 class="font-serif text-2xl">
+		<a href={`/alt-det-andet/${s.frontmatter.slug}`} class="no-underline">{s.frontmatter.title}</a></h1>
           <a href={`/alt-det-andet/${s.frontmatter.slug}`}>Læs mere</a>
         </article>
       ))
