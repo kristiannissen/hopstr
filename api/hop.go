@@ -19,7 +19,7 @@ func Hop(w http.ResponseWriter, req *http.Request) {
 	slug := req.URL.Query().Get("slug")
 
 	if hop, err = repo.Find(slug); err != nil {
-		log.Println(err)
+		log.Fatal(err)
 
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("404 - not found"))

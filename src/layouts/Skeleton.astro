@@ -68,5 +68,51 @@ let img = themeImage ? themeImage : ti;
         </figure>
       </section>
     </footer>
+    <div class="fixed bottom-10 right-4 hidden" id="consent_float">
+      <div class="">
+        <label for="consent">
+          Consent you motherfucker!<br />
+          <input type="radio" name="consent" value="0" /> No!
+          <input type="radio" name="consent" value="1" /> Yes!
+          <button class="" id="consent_button">Submit</button>
+        </label>
+      </div>
+      <script src="http://localhost:1234/api/consent"></script>
+      <script>
+        // Consent
+        /**
+         * Check if consent is stored
+         * if not, ask for consent
+         * if yes, do nothing
+         */
+        (() => {
+          let b = document.getElementById("consent_button");
+          let f = document.getElementById("consent_float");
+          if (localStorage.getItem("c") === null) {
+            // No consent, show the box
+            f.classList.toggle("hidden");
+            b.addEventListener(
+              "click",
+              () => {
+                // Get selected value
+                let v = document.querySelector(
+                  "input[name='consent']:checked",
+                )?.value;
+                // If value is 1 we have consent
+                fetch("http://localhost:1234/api/consent", {
+                  method: "POST",
+                  body: JSON.stringify({ uuid: window.uuid, consent: v }),
+                }).then((resp) => {
+                  console.log(resp.status);
+                });
+              },
+              false,
+            );
+          } else {
+            // Create new consent
+          }
+        });
+      </script>
+    </div>
   </body>
 </html>

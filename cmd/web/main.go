@@ -10,7 +10,7 @@ import (
 func main() {
 	mux := http.NewServeMux()
 	// Dummy handler
-	mux.Handle("/api/hello", http.HandlerFunc(a.Hello))
+	mux.Handle("/api/consent", http.HandlerFunc(a.Consent))
 	// Hop handler
 	mux.Handle("/api/hop", http.HandlerFunc(a.Hop))
 	// Hops handler

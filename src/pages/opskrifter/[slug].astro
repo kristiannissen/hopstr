@@ -18,6 +18,8 @@ export async function getStaticPaths() {
 
 const { brew } = Astro.props;
 const { Content } = Astro.props.brew;
+// For ld+json
+let title = brew.frontmatter.title;
 ---
 
 <Skeleton title={brew.frontmatter.title} description={brew.frontmatter.summary}>
@@ -32,13 +34,13 @@ const { Content } = Astro.props.brew;
     </div>
   </section>
 
-  <script type="application/ld+json">
+  <script type="application/ld+json" define:vars={{title}}>
     {
       "@context": "https://schema.org",
       "@type": "Blog",
       "@id": "https://detjegbrygger.dk/opskrifter",
       "mainEntryOfPage": "https://detjegbrygger.dk/opskrifter",
-      "name": "",
+      "name": `${title}`,
       "description": "",
       "publisher": {},
       "blogPost": []
