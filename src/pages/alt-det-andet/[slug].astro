@@ -1,5 +1,6 @@
 ---
 import Skeleton from "../../layouts/Skeleton.astro";
+import LatestBrews from "../../components/LatestBrews.astro";
 
 export async function getStaticPaths() {
   const stuff = (await Astro.glob("../../content/other-stuff/*.mdx")) || [];
@@ -27,4 +28,8 @@ let desc = "";
       <Content />
     </article>
   </section>
+  <div class="p-4 h-40 max-w-prose mx-auto">
+    <h2 class="font-serif font-extrabold mb-4 text-xl">Seneste opskrifter</h2>
+    <LatestBrews />
+  </div>
 </Skeleton>
