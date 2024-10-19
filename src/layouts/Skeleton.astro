@@ -85,7 +85,7 @@ let img = themeImage ? themeImage : ti;
          * if not, ask for consent
          * if yes, do nothing
          */
-        (() => {
+        () => {
           let b = document.getElementById("consent_button");
           let f = document.getElementById("consent_float");
           if (localStorage.getItem("c") === null) {
@@ -111,7 +111,7 @@ let img = themeImage ? themeImage : ti;
           } else {
             // Create new consent
           }
-        });
+        };
       </script>
     </div>
   </body>
