@@ -22,7 +22,6 @@ const { text, url } = Astro.props;
 <script>
   let b = document.querySelector("#button");
   b.addEventListener("click", (e) => {
-    console.log(b);
     location.href = b.getAttribute("data-url");
   });
 </script>
