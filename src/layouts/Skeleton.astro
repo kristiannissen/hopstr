@@ -77,7 +77,7 @@ let img = themeImage ? themeImage : ti;
           <button class="" id="consent_button">Submit</button>
         </label>
       </div>
-      <script src="http://localhost:1234/api/consent"></script>
+      <script src="/api/consent"></script>
       <script>
         // Consent
         /**
@@ -99,7 +99,7 @@ let img = themeImage ? themeImage : ti;
                   "input[name='consent']:checked",
                 )?.value;
                 // If value is 1 we have consent
-                fetch("http://localhost:1234/api/consent", {
+                fetch("/api/consent", {
                   method: "POST",
                   body: JSON.stringify({ uuid: window.uuid, consent: v }),
                 }).then((resp) => {
